@@ -30,8 +30,8 @@
             <asp:Panel ID="Panel1" runat="server" DefaultButton="btnFiltrar">
                 <div class="form-inline justify-content-center mt-2">
                     <div class="form-group">
-                        <label class="sr-only">Hoja de Ruta</label>
-                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Hoja de Ruta"></asp:TextBox>
+                        <label class="sr-only">Mesa</label>
+                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Mesa"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label class="sr-only">Fecha</label>
