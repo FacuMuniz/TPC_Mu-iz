@@ -1,0 +1,26 @@
+﻿body {
+    background-color: #ddd !important;
+}
+
+.bg-Yellow {
+    background-color: #ffcd00; /*ffff66*/
+    color: white;
+    height: 150px;
+    z-index: 100;
+}
+
+.bg-White {
+    background-color: white;
+    color: white;
+    height: 150px;
+    z-index: 1000000;
+    border-right: 3px solid white;
+}
+
+.bg-Menu {
+    background-color: #c6d9f1;
+    color: white !important;
+    /*height: 150px;*/
+    z-index: 1000000;
+    border-radius: 12px;
+}
