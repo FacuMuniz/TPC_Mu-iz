@@ -7,14 +7,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms;
+using TPC_Muñiz.Managers;
+using TPC_Muñiz.Models;
+using System.Configuration;
+using System.Data.SqlClient;
+using ACCESO_DATOS;
 
 namespace TPC_Muñiz
 {
     public partial class frmCargarPedido : Form
     {
-        public frmCargarPedido()
+        public frmCargarPedido(int id, string nombre)
         {
             InitializeComponent();
+            MesasManager listmesas = new MesasManager();
+            cmbMesas.DataSource = listmesas.TraerMesas();
+            cmbMesas.DisplayMember = "Id";
+            cmbMesas.ValueMember = "Salon";
+            lblid.Text = id.ToString();
+            label2.Text = nombre;
         }
+
+        private void btnAbrirMesa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+
+            
+
+            accesoDatos.setearSP("Cerrardia");//SETEO EL SP
+
+            SqlParameter[] VectorParam = new SqlParameter[2]; //no funciona con lista, aqui se debe agregar la cantidad de parametros totales
+
+            accesoDatos.agregarParametroSP(VectorParam, 0, "@id", System.Data.SqlDbType.Int, int.Parse(lblid.Text)); // AGREGO UN PARAMETRO AL VECTOR EN ESA POSICION
+  
+
+
+            accesoDatos.Comando.Parameters.AddRange(VectorParam);//AGREGO LA MATRIZ DE PARAMETROS A LOS PARAMETROS DEL COMANDO
+
+            accesoDatos.abrirConexion(); // abro conexion   
+            accesoDatos.ejecutarConsulta();//EJECUTO EL SP
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();//CIERRO CONEXION
+            }
+
+            Environment.Exit(0);
+        }
+
+
     }
 }
+    

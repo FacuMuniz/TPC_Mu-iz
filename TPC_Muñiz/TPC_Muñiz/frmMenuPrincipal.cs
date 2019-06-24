@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
+using ACCESO_DATOS;
 
 namespace TPC_Muñiz
 {
     public partial class frmMenuPrincipal : Form
     {
-        public frmMenuPrincipal()
+        public frmMenuPrincipal(int id)
         {
             InitializeComponent();
+            lblID.Text = id.ToString();
         }
 
         private void btnMostrarmMesas_Click(object sender, EventArgs e)
@@ -48,7 +52,41 @@ namespace TPC_Muñiz
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+
+
+
+                accesoDatos.setearSP("Cerrardia");//SETEO EL SP
+
+                SqlParameter[] VectorParam = new SqlParameter[2]; //no funciona con lista, aqui se debe agregar la cantidad de parametros totales
+
+                accesoDatos.agregarParametroSP(VectorParam, 0, "@id", System.Data.SqlDbType.Int, int.Parse(lblID.Text)); // AGREGO UN PARAMETRO AL VECTOR EN ESA POSICION
+
+
+
+                accesoDatos.Comando.Parameters.AddRange(VectorParam);//AGREGO LA MATRIZ DE PARAMETROS A LOS PARAMETROS DEL COMANDO
+
+                accesoDatos.abrirConexion(); // abro conexion   
+                accesoDatos.ejecutarConsulta();//EJECUTO EL SP
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();//CIERRO CONEXION
+            }
             Environment.Exit(0);
+        }
+
+        private void btnCargarStock_Click(object sender, EventArgs e)
+        {
+            frmCargarStocks CargarStocks = new frmCargarStocks();
+            CargarStocks.Show();
         }
     }
 }

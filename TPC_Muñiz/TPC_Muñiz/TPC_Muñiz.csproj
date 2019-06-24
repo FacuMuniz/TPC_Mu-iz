@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBManager\accesoDatosManager.cs" />
     <Compile Include="frmAbrirDia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +59,12 @@
     </Compile>
     <Compile Include="frmCargarPedido.Designer.cs">
       <DependentUpon>frmCargarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargarStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargarStocks.Designer.cs">
+      <DependentUpon>frmCargarStocks.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConsultarPedidos.cs">
       <SubType>Form</SubType>
@@ -88,10 +96,38 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\PedidoComida.cs" />
-    <Compile Include="Models\PedidosBebidas.cs" />
+    <Compile Include="frmPedidosMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPedidosMesa.Designer.cs">
+      <DependentUpon>frmPedidosMesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\MesasManager.cs" />
+    <Compile Include="Managers\MeseroManager.cs" />
+    <Compile Include="Managers\PedidosManager.cs" />
+    <Compile Include="Managers\StockManager.cs" />
+    <Compile Include="Models\Comida.cs" />
+    <Compile Include="Models\Ingrediente.cs" />
+    <Compile Include="Models\Mesas.cs" />
+    <Compile Include="Models\mesero.cs" />
+    <Compile Include="Models\Pedidos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAbrirDia.resx">
+      <DependentUpon>frmAbrirDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarPedido.resx">
+      <DependentUpon>frmCargarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarStocks.resx">
+      <DependentUpon>frmCargarStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarPedidos.resx">
+      <DependentUpon>frmConsultarPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarStocks.resx">
+      <DependentUpon>frmConsultarStocks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMesas.resx">
       <DependentUpon>frmMesas.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPedidosMesa.resx">
+      <DependentUpon>frmPedidosMesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
