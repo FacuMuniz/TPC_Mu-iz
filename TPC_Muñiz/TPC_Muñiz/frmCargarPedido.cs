@@ -22,16 +22,26 @@ namespace TPC_Muñiz
         {
             InitializeComponent();
             MesasManager listmesas = new MesasManager();
-            cmbMesas.DataSource = listmesas.TraerMesas();
+            cmbMesas.DataSource = listmesas.TraerMesasxMesero(id);
             cmbMesas.DisplayMember = "Id";
-            cmbMesas.ValueMember = "Salon";
             lblid.Text = id.ToString();
-            label2.Text = nombre;
+            label3.Text = nombre;
         }
 
         private void btnAbrirMesa_Click(object sender, EventArgs e)
         {
 
+            MesasManager listmesas = new MesasManager();
+            if (listmesas.verificarmesa(int.Parse(cmbMesas.Text.ToString())) == "OK")
+            {
+                listmesas.abrirmesa(int.Parse(cmbMesas.Text.ToString()), int.Parse(lblid.Text));
+                frmPedidosMesa frm = new frmPedidosMesa(int.Parse(cmbMesas.Text.ToString()), int.Parse(lblid.Text));
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show(listmesas.verificarmesa(int.Parse(cmbMesas.Text.ToString())));
+            }
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e)
@@ -68,7 +78,12 @@ namespace TPC_Muñiz
             Environment.Exit(0);
         }
 
+        private void frmCargarPedido_FormClosing(object sender, FormClosingEventArgs e)
+        {
 
+            Environment.Exit(0);
+
+        }
     }
 }
     

@@ -67,6 +67,7 @@
             // 
             // cmbIngrediente
             // 
+            this.cmbIngrediente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIngrediente.FormattingEnabled = true;
             this.cmbIngrediente.Location = new System.Drawing.Point(94, 30);
             this.cmbIngrediente.Name = "cmbIngrediente";

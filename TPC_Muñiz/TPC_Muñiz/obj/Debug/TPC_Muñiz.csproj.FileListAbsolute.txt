@@ -39,3 +39,4 @@ C:\Users\FacuyMaty\Desktop\REPOS FACULTAD\FacuMuniz\TPC_Mu-iz\TPC_Muñiz\TPC_Mu�
 C:\Users\FacuyMaty\Desktop\REPOS FACULTAD\FacuMuniz\TPC_Mu-iz\TPC_Muñiz\TPC_Muñiz\obj\Debug\TPC_Muñiz.frmConsultarStocks.resources
 C:\Users\FacuyMaty\Desktop\REPOS FACULTAD\FacuMuniz\TPC_Mu-iz\TPC_Muñiz\TPC_Muñiz\obj\Debug\TPC_Muñiz.frmCargarPedido.resources
 C:\Users\FacuyMaty\Desktop\REPOS FACULTAD\FacuMuniz\TPC_Mu-iz\TPC_Muñiz\TPC_Muñiz\obj\Debug\TPC_Muñiz.frmCargarStocks.resources
+C:\Users\FacuyMaty\Desktop\REPOS FACULTAD\FacuMuniz\TPC_Mu-iz\TPC_Muñiz\TPC_Muñiz\obj\Debug\TPC_Muñiz.frmPedidosMesa.resources

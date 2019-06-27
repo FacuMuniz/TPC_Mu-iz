@@ -90,6 +90,7 @@
             // 
             // cmbMesas
             // 
+            this.cmbMesas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMesas.FormattingEnabled = true;
             this.cmbMesas.Location = new System.Drawing.Point(404, 30);
             this.cmbMesas.Name = "cmbMesas";

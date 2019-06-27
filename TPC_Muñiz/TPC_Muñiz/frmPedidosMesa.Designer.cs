@@ -70,6 +70,7 @@
             // 
             // cmbcomidas
             // 
+            this.cmbcomidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbcomidas.FormattingEnabled = true;
             this.cmbcomidas.Location = new System.Drawing.Point(63, 44);
             this.cmbcomidas.Name = "cmbcomidas";

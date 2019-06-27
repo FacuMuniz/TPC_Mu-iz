@@ -66,6 +66,7 @@
             // 
             // cmbMesas
             // 
+            this.cmbMesas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMesas.FormattingEnabled = true;
             this.cmbMesas.Location = new System.Drawing.Point(71, 46);
             this.cmbMesas.Name = "cmbMesas";
@@ -116,6 +117,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmCargarPedido";
             this.Text = "frmCargarPedido";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCargarPedido_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

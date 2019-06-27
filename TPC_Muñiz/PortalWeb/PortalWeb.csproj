@@ -67,11 +67,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Adittionals.css" />
+    <Content Include="Assets\Login.css" />
     <Content Include="Assets\Models.css" />
+    <Content Include="BandejaComidas.aspx" />
+    <Content Include="BandejaIngredientes.aspx" />
+    <Content Include="BandejaMesas.aspx" />
     <Content Include="BandejaPedidos.aspx" />
+    <Content Include="BandejaUsuarios.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BandejaComidas.aspx.cs">
+      <DependentUpon>BandejaComidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BandejaComidas.aspx.designer.cs">
+      <DependentUpon>BandejaComidas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BandejaIngredientes.aspx.cs">
+      <DependentUpon>BandejaIngredientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BandejaIngredientes.aspx.designer.cs">
+      <DependentUpon>BandejaIngredientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BandejaMesas.aspx.cs">
+      <DependentUpon>BandejaMesas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BandejaMesas.aspx.designer.cs">
+      <DependentUpon>BandejaMesas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BandejaPedidos.aspx.cs">
       <DependentUpon>BandejaPedidos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -79,6 +107,30 @@
     <Compile Include="BandejaPedidos.aspx.designer.cs">
       <DependentUpon>BandejaPedidos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BandejaUsuarios.aspx.cs">
+      <DependentUpon>BandejaUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BandejaUsuarios.aspx.designer.cs">
+      <DependentUpon>BandejaUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DBManager\accesoDatosManager.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\MesasManager.cs" />
+    <Compile Include="Managers\MeseroManager.cs" />
+    <Compile Include="Managers\PedidosManager.cs" />
+    <Compile Include="Managers\StockManager.cs" />
+    <Compile Include="Models\Comida.cs" />
+    <Compile Include="Models\Ingrediente.cs" />
+    <Compile Include="Models\Mesas.cs" />
+    <Compile Include="Models\mesero.cs" />
+    <Compile Include="Models\Pedidos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

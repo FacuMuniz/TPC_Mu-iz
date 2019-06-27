@@ -7,7 +7,6 @@ using TPC_Muñiz.Models;
 using ACCESO_DATOS;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 using System.Configuration;
 
 namespace TPC_Muñiz.Managers
@@ -63,7 +62,6 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
 
                     cn.Close();
                     return null;
@@ -111,7 +109,6 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
 
                     cn.Close();
                     return null;
@@ -166,8 +163,7 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                   
                     cn.Close();
                     return null;
                 }
@@ -215,8 +211,7 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    
                     cn.Close();
                     return null;
                 }
@@ -262,8 +257,7 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    
                     cn.Close();
                     return null;
                 }

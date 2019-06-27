@@ -1,0 +1,1315 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    background-color: #ddd;
+}
+
+.d-flex {
+    display: flex;
+}
+
+
+
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.flex-direction-row {
+    flex-direction: row;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between
+}
+
+@media screen and (max-width: 600px) {
+    .header-container {
+        margin-top: 30px !important;
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+    }
+
+    .right-column {
+        text-align: right !important;
+    }
+
+        .right-column > a {
+            margin-top: 15px !important;
+        }
+
+    .user-status {
+        margin-top: 20px !important;
+    }
+
+    .circles {
+        margin-left: auto !important;
+    }
+
+    .list-projects {
+        max-width: 100% !important;
+    }
+
+    .add-tasklbl {
+        max-width: 85% !important;
+        color: #839399;
+    }
+}
+
+.header-container {
+    margin-top: 65px;
+    margin-left: 68px;
+    margin-right: 68px;
+}
+
+.header {
+    font-family: 'Open Sans';
+    font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.37;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+}
+
+.sub-header {
+    margin-top: 7px;
+    font-family: 'Open Sans';
+    font-size: 20px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+}
+
+.user-logo {
+    font-size: 190px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.04;
+    letter-spacing: normal;
+    text-align: left;
+    color: #0092d2;
+}
+
+.logo-container {
+    margin-top: 5em;
+}
+
+.user-status {
+    width: 348px;
+    height: 75px;
+    border-radius: 10px;
+    background-color: rgba(50, 57, 59, 0.75);
+}
+
+.user-status-inner {
+    font-family: 'Open Sans';
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    margin-left: 19px;
+}
+
+
+.task-add {
+    width: 750px;
+    height: 110px;
+    border-radius: 10px;
+    background-color: rgba(50, 57, 59, 0.75);
+}
+
+.obs-box {
+    width: 750px;
+    height: 255px;
+    border-radius: 10px;
+    background-color: rgba(50, 57, 59, 0.75);
+}
+
+.search-box {
+    width: 550px;
+    height: 150px;
+    border-radius: 12px;
+    background-color: rgba(50, 57, 59, 0.75);
+}
+
+
+@media (min-width:570px) {
+    #txtarea {
+        min-width: 37rem !important;
+        margin-left: 6.5rem !important;
+    }
+}
+
+.task-box {
+    width: 180px;
+    height: 20px;
+    border-radius: 12px;
+}
+
+.txt-area {
+    height: 120px;
+    border-radius: 12px;
+    margin-left: 105px;
+}
+
+.logout {
+    font-size: 30px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.03;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    margin-right: 21px;
+}
+
+.color-blue {
+    color: #f2f6fb !important;
+}
+
+.none {
+    list-style: none;
+}
+
+.l-projects {
+    margin-top: 15px;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+}
+
+.list-projects {
+    margin-top: 12px;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+    max-width: 47%;
+}
+
+.list-task {
+    margin-top: 15px;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+}
+
+.btn-task {
+    margin-left: 40px;
+}
+
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.btn-circle2 {
+    width: 50px;
+    height: 50px;
+    padding: 6px 0px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.btn-circlefile {
+    width: 50px;
+    height: 50px;
+    padding: 6px 0px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    color: transparent;
+    background-color: darkgoldenrod
+}
+
+.tblProyectos {
+    background-color: #ddd;
+    color: #6c757d
+}
+
+.text-primary {
+    color: white !important;
+}
+
+    .text-primary:hover {
+        color: white !important;
+    }
+
+.block {
+    text-align: center;
+}
+
+.margin {
+    margin-right: 900px;
+}
+
+.div-up {
+    margin-top: -30px;
+    margin-left: 150px;
+}
+
+.show-tasks {
+    margin-left: -30px;
+}
+/* ------------------------------------COMIENZO DE ESTILOS AL TIMER--------------------------------------------*/
+@import 'https://fonts.googleapis.com/css?family=Nova+Mono|Eczar';
+
+.body {
+    background-color: white;
+    color: black;
+}
+
+.btnmarginleft {
+    margin-left: 120px;
+}
+
+.div1 {
+    transform: translateY(3%);
+    margin-top: 40px;
+    font-family: 'Open Sans';
+    font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.37;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+}
+
+.time {
+    transform: translateY(3%);
+    margin-top: 40px;
+    font-family: 'Open Sans';
+    font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.37;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+    /*margin-left: 380px;*/
+}
+
+.time-date {
+    transform: translateY(1%);
+    margin-top: 30px;
+    font-family: 'Open Sans';
+    font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.37;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+}
+
+.date {
+    font-family: 'Open Sans', serif;
+    font-size: 10vmin;
+    text-align: center;
+}
+
+.cono {
+    transform: translateY(3%);
+    margin-top: 30px;
+    font-family: 'Open Sans';
+    font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.37;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
+}
+
+.marco {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.time-style {
+    margin-top: 40px;
+}
+
+
+#clock .digits div.zero .d1,
+#clock .digits div.zero .d3,
+#clock .digits div.zero .d4,
+#clock .digits div.zero .d5,
+#clock .digits div.zero .d6,
+#clock .digits div.zero .d7 {
+    opacity: 1;
+}
+
+.dataTables_length {
+    color: #6c757d !important
+}
+
+.dataTables_filter {
+    color: #6c757d !important
+}
+
+.dataTables_empty {
+    background-color: #252424 !important;
+    color: #6c757d !important
+}
+
+.odd {
+    background-color: #252424 !important;
+    color: #6c757d !important
+}
+
+
+
+
+
+
+
+
+
+
+/*-------------------------
+	Simple reset
+--------------------------*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*-------------------------
+	The clocks
+--------------------------*/
+
+
+#clock {
+    width: 370px;
+    padding: 40px;
+    margin: 200px auto 60px;
+    position: relative;
+}
+
+    #clock:after {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 20px;
+        border-radius: 100%;
+        left: 50%;
+        margin-left: -200px;
+        bottom: 2px;
+        z-index: -1;
+    }
+
+
+    #clock .display {
+        text-align: center;
+        padding: 40px 20px 20px;
+        border-radius: 6px;
+        position: relative;
+        height: 54px;
+    }
+
+
+    /*-------------------------
+	Light color theme
+--------------------------*/
+
+
+    #clock.light {
+        background-color: #f3f3f3;
+        color: #272e38;
+    }
+
+        #clock.light:after {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        #clock.light .digits div span {
+            background-color: #272e38;
+            border-color: #272e38;
+        }
+
+        #clock.light .digits div.dots:before,
+        #clock.light .digits div.dots:after {
+            background-color: #272e38;
+        }
+
+        #clock.light .alarm {
+            background: url('../img/alarm_light.jpg');
+        }
+
+        #clock.light .display {
+            background-color: #dddddd;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.08) inset, 0 1px 1px #fafafa;
+        }
+
+
+    /*-------------------------
+	Dark color theme
+--------------------------*/
+
+
+    #clock.dark {
+        background-color: #272e38;
+        color: #cacaca;
+    }
+
+        #clock.dark:after {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        #clock.dark .digits div span {
+            background-color: #cacaca;
+            border-color: #cacaca;
+        }
+
+        #clock.dark .alarm {
+            background: url('../img/alarm_dark.jpg');
+        }
+
+        #clock.dark .display {
+            background-color: #0f1620;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.08) inset, 0 1px 1px #2d3642;
+        }
+
+        #clock.dark .digits div.dots:before,
+        #clock.dark .digits div.dots:after {
+            background-color: #cacaca;
+        }
+
+
+    /*-------------------------
+	The Digits
+--------------------------*/
+
+
+    #clock .digits div {
+        text-align: left;
+        position: relative;
+        width: 28px;
+        height: 50px;
+        display: inline-block;
+        margin: 0 4px;
+    }
+
+        #clock .digits div span {
+            opacity: 0;
+            position: absolute;
+            -webkit-transition: 0.25s;
+            -moz-transition: 0.25s;
+            transition: 0.25s;
+        }
+
+            #clock .digits div span:before,
+            #clock .digits div span:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+                border: 5px solid transparent;
+            }
+
+    #clock .digits .d1 {
+        height: 5px;
+        width: 16px;
+        top: 0;
+        left: 6px;
+    }
+
+        #clock .digits .d1:before {
+            border-width: 0 5px 5px 0;
+            border-right-color: inherit;
+            left: -5px;
+        }
+
+        #clock .digits .d1:after {
+            border-width: 0 0 5px 5px;
+            border-left-color: inherit;
+            right: -5px;
+        }
+
+    #clock .digits .d2 {
+        height: 5px;
+        width: 16px;
+        top: 24px;
+        left: 6px;
+    }
+
+        #clock .digits .d2:before {
+            border-width: 3px 4px 2px;
+            border-right-color: inherit;
+            left: -8px;
+        }
+
+        #clock .digits .d2:after {
+            border-width: 3px 4px 2px;
+            border-left-color: inherit;
+            right: -8px;
+        }
+
+    #clock .digits .d3 {
+        height: 5px;
+        width: 16px;
+        top: 48px;
+        left: 6px;
+    }
+
+        #clock .digits .d3:before {
+            border-width: 5px 5px 0 0;
+            border-right-color: inherit;
+            left: -5px;
+        }
+
+        #clock .digits .d3:after {
+            border-width: 5px 0 0 5px;
+            border-left-color: inherit;
+            right: -5px;
+        }
+
+    #clock .digits .d4 {
+        width: 5px;
+        height: 14px;
+        top: 7px;
+        left: 0;
+    }
+
+        #clock .digits .d4:before {
+            border-width: 0 5px 5px 0;
+            border-bottom-color: inherit;
+            top: -5px;
+        }
+
+        #clock .digits .d4:after {
+            border-width: 0 0 5px 5px;
+            border-left-color: inherit;
+            bottom: -5px;
+        }
+
+    #clock .digits .d5 {
+        width: 5px;
+        height: 14px;
+        top: 7px;
+        right: 0;
+    }
+
+        #clock .digits .d5:before {
+            border-width: 0 0 5px 5px;
+            border-bottom-color: inherit;
+            top: -5px;
+        }
+
+        #clock .digits .d5:after {
+            border-width: 5px 0 0 5px;
+            border-top-color: inherit;
+            bottom: -5px;
+        }
+
+    #clock .digits .d6 {
+        width: 5px;
+        height: 14px;
+        top: 32px;
+        left: 0;
+    }
+
+        #clock .digits .d6:before {
+            border-width: 0 5px 5px 0;
+            border-bottom-color: inherit;
+            top: -5px;
+        }
+
+        #clock .digits .d6:after {
+            border-width: 0 0 5px 5px;
+            border-left-color: inherit;
+            bottom: -5px;
+        }
+
+    #clock .digits .d7 {
+        width: 5px;
+        height: 14px;
+        top: 32px;
+        right: 0;
+    }
+
+        #clock .digits .d7:before {
+            border-width: 0 0 5px 5px;
+            border-bottom-color: inherit;
+            top: -5px;
+        }
+
+        #clock .digits .d7:after {
+            border-width: 5px 0 0 5px;
+            border-top-color: inherit;
+            bottom: -5px;
+        }
+
+
+    /* 1 */
+
+    #clock .digits div.one .d5,
+    #clock .digits div.one .d7 {
+        opacity: 1;
+    }
+
+    /* 2 */
+
+    #clock .digits div.two .d1,
+    #clock .digits div.two .d5,
+    #clock .digits div.two .d2,
+    #clock .digits div.two .d6,
+    #clock .digits div.two .d3 {
+        opacity: 1;
+    }
+
+    /* 3 */
+
+    #clock .digits div.three .d1,
+    #clock .digits div.three .d5,
+    #clock .digits div.three .d2,
+    #clock .digits div.three .d7,
+    #clock .digits div.three .d3 {
+        opacity: 1;
+    }
+
+    /* 4 */
+
+    #clock .digits div.four .d5,
+    #clock .digits div.four .d2,
+    #clock .digits div.four .d4,
+    #clock .digits div.four .d7 {
+        opacity: 1;
+    }
+
+    /* 5 */
+
+    #clock .digits div.five .d1,
+    #clock .digits div.five .d2,
+    #clock .digits div.five .d4,
+    #clock .digits div.five .d3,
+    #clock .digits div.five .d7 {
+        opacity: 1;
+    }
+
+    /* 6 */
+
+    #clock .digits div.six .d1,
+    #clock .digits div.six .d2,
+    #clock .digits div.six .d4,
+    #clock .digits div.six .d3,
+    #clock .digits div.six .d6,
+    #clock .digits div.six .d7 {
+        opacity: 1;
+    }
+
+
+    /* 7 */
+
+    #clock .digits div.seven .d1,
+    #clock .digits div.seven .d5,
+    #clock .digits div.seven .d7 {
+        opacity: 1;
+    }
+
+    /* 8 */
+
+    #clock .digits div.eight .d1,
+    #clock .digits div.eight .d2,
+    #clock .digits div.eight .d3,
+    #clock .digits div.eight .d4,
+    #clock .digits div.eight .d5,
+    #clock .digits div.eight .d6,
+    #clock .digits div.eight .d7 {
+        opacity: 1;
+    }
+
+    /* 9 */
+
+    #clock .digits div.nine .d1,
+    #clock .digits div.nine .d2,
+    #clock .digits div.nine .d3,
+    #clock .digits div.nine .d4,
+    #clock .digits div.nine .d5,
+    #clock .digits div.nine .d7 {
+        opacity: 1;
+    }
+
+    /* 0 */
+
+    #clock .digits div.zero .d1,
+    #clock .digits div.zero .d3,
+    #clock .digits div.zero .d4,
+    #clock .digits div.zero .d5,
+    #clock .digits div.zero .d6,
+    #clock .digits div.zero .d7 {
+        opacity: 1;
+    }
+
+
+    /* The dots */
+
+    #clock .digits div.dots {
+        width: 5px;
+    }
+
+        #clock .digits div.dots:before,
+        #clock .digits div.dots:after {
+            width: 5px;
+            height: 5px;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+        }
+
+        #clock .digits div.dots:after {
+            top: 34px;
+        }
+
+
+    /*-------------------------
+	The Alarm
+--------------------------*/
+
+
+    #clock .alarm {
+        width: 16px;
+        height: 16px;
+        bottom: 20px;
+        background: url('../img/alarm_light.jpg');
+        position: absolute;
+        opacity: 0.2;
+    }
+
+        #clock .alarm.active {
+            opacity: 1;
+        }
+
+
+    /*-------------------------
+	Weekdays
+--------------------------*/
+
+
+    #clock .weekdays {
+        font-size: 12px;
+        position: absolute;
+        width: 100%;
+        top: 10px;
+        left: 0;
+        text-align: center;
+    }
+
+
+        #clock .weekdays span {
+            opacity: 0.2;
+            padding: 0 10px;
+        }
+
+            #clock .weekdays span.active {
+                opacity: 1;
+            }
+
+
+    /*-------------------------
+		AM/PM
+--------------------------*/
+
+
+    #clock .ampm {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 12px;
+    }
+
+
+/*-------------------------
+		Button
+--------------------------*/
+
+
+.button-holder {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+a.button {
+    background-color: #f6a7b3;
+    background-image: -webkit-linear-gradient(top, #f6a7b3, #f0a3af);
+    background-image: -moz-linear-gradient(top, #f6a7b3, #f0a3af);
+    background-image: linear-gradient(top, #f6a7b3, #f0a3af);
+    border: 1px solid #eb9ba7;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px #ccc;
+    color: #fff;
+    text-decoration: none !important;
+    padding: 15px 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+    a.button:hover {
+        opacity: 0.9;
+    }
+
+
+/*----------------------------
+	clockpicker
+-----------------------------*/
+
+
+.clockpicker .input-group-addon {
+    cursor: pointer;
+}
+
+.clockpicker-moving {
+    cursor: move;
+}
+
+.clockpicker-align-left.popover > .arrow {
+    left: 25px;
+}
+
+.clockpicker-align-top.popover > .arrow {
+    top: 17px;
+}
+
+.clockpicker-align-right.popover > .arrow {
+    left: auto;
+    right: 25px;
+}
+
+.clockpicker-align-bottom.popover > .arrow {
+    top: auto;
+    bottom: 6px;
+}
+
+.clockpicker-popover .popover-title {
+    background-color: #fff;
+    color: #999;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+}
+
+    .clockpicker-popover .popover-title span {
+        cursor: pointer;
+    }
+
+.clockpicker-popover .popover-content {
+    background-color: #f8f8f8;
+    padding: 12px;
+}
+
+.popover-content:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.clockpicker-plate {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: visible;
+    position: relative;
+    /* Disable text selection highlighting. Thanks to Hermanya */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.clockpicker-canvas,
+.clockpicker-dial {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+}
+
+.clockpicker-minutes {
+    visibility: hidden;
+}
+
+.clockpicker-tick {
+    border-radius: 50%;
+    color: #666;
+    line-height: 26px;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    cursor: pointer;
+}
+
+    .clockpicker-tick.active,
+    .clockpicker-tick:hover {
+        background-color: rgb(192, 229, 247);
+        background-color: rgba(0, 149, 221, .25);
+    }
+
+.clockpicker-button {
+    background-image: none;
+    background-color: #fff;
+    border-width: 1px 0 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin: 0;
+    padding: 10px 0;
+}
+
+    .clockpicker-button:hover {
+        background-image: none;
+        background-color: #ebebeb;
+    }
+
+    .clockpicker-button:focus {
+        outline: none !important;
+    }
+
+.clockpicker-dial {
+    -webkit-transition: -webkit-transform 350ms, opacity 350ms;
+    -moz-transition: -moz-transform 350ms, opacity 350ms;
+    -ms-transition: -ms-transform 350ms, opacity 350ms;
+    -o-transition: -o-transform 350ms, opacity 350ms;
+    transition: transform 350ms, opacity 350ms;
+}
+
+.clockpicker-dial-out {
+    opacity: 0;
+}
+
+.clockpicker-hours.clockpicker-dial-out {
+    -webkit-transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -o-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+}
+
+.clockpicker-minutes.clockpicker-dial-out {
+    -webkit-transform: scale(.8, .8);
+    -moz-transform: scale(.8, .8);
+    -ms-transform: scale(.8, .8);
+    -o-transform: scale(.8, .8);
+    transform: scale(.8, .8);
+}
+
+.clockpicker-canvas {
+    -webkit-transition: opacity 175ms;
+    -moz-transition: opacity 175ms;
+    -ms-transition: opacity 175ms;
+    -o-transition: opacity 175ms;
+    transition: opacity 175ms;
+}
+
+.clockpicker-canvas-out {
+    opacity: 0.25;
+}
+
+.clockpicker-canvas-bearing,
+.clockpicker-canvas-fg {
+    stroke: none;
+    fill: rgb(0, 149, 221);
+}
+
+.clockpicker-canvas-bg {
+    stroke: none;
+    fill: rgb(192, 229, 247);
+}
+
+.clockpicker-canvas-bg-trans {
+    fill: rgba(0, 149, 221, .25);
+}
+
+.clockpicker-canvas line {
+    stroke: rgb(0, 149, 221);
+    stroke-width: 1;
+    stroke-linecap: round;
+    /*shape-rendering: crispEdges;*/
+}
+
+.clockpicker-button.am-button {
+    margin: 1px;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 4px;
+}
+
+.clockpicker-button.pm-button {
+    margin: 1px 1px 1px 136px;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 4px;
+}
+
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+    display: none;
+    max-width: 276px;
+    padding: 1px;
+    text-align: left;
+    white-space: normal;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+    .popover.top {
+        margin-top: -10px;
+    }
+
+    .popover.right {
+        margin-left: 10px;
+    }
+
+    .popover.bottom {
+        margin-top: 10px;
+    }
+
+    .popover.left {
+        margin-left: -10px;
+    }
+
+.popover-title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 18px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    border-radius: 5px 5px 0 0;
+}
+
+.popover-content {
+    padding: 9px 14px;
+}
+
+.popover > .arrow,
+.popover > .arrow:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    /* The following are set in WordPress (wp-admin/css/revisions.css) - reset them to initial values */
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    z-index: auto;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+}
+
+.popover > .arrow {
+    border-width: 11px;
+}
+
+    .popover > .arrow:after {
+        content: "";
+        border-width: 10px;
+    }
+
+.popover.top > .arrow {
+    bottom: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-color: #999;
+    border-top-color: rgba(0, 0, 0, .25);
+    border-bottom-width: 0;
+}
+
+    .popover.top > .arrow:after {
+        bottom: 1px;
+        margin-left: -10px;
+        content: " ";
+        border-top-color: #fff;
+        border-bottom-width: 0;
+    }
+
+.popover.right > .arrow {
+    top: 50%;
+    left: -11px;
+    margin-top: -11px;
+    border-right-color: #999;
+    border-right-color: rgba(0, 0, 0, .25);
+    border-left-width: 0;
+}
+
+    .popover.right > .arrow:after {
+        bottom: -10px;
+        left: 1px;
+        content: " ";
+        border-right-color: #fff;
+        border-left-width: 0;
+    }
+
+.popover.bottom > .arrow {
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-width: 0;
+    border-bottom-color: #999;
+    border-bottom-color: rgba(0, 0, 0, .25);
+}
+
+    .popover.bottom > .arrow:after {
+        top: 1px;
+        margin-left: -10px;
+        content: " ";
+        border-top-width: 0;
+        border-bottom-color: #fff;
+    }
+
+.popover.left > .arrow {
+    top: 50%;
+    right: -11px;
+    margin-top: -11px;
+    border-right-width: 0;
+    border-left-color: #999;
+    border-left-color: rgba(0, 0, 0, .25);
+}
+
+    .popover.left > .arrow:after {
+        right: 1px;
+        bottom: -10px;
+        content: " ";
+        border-right-width: 0;
+        border-left-color: #fff;
+    }
+
+.btn {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+}
+
+    .btn:focus,
+    .btn:active:focus,
+    .btn.active:focus {
+        outline: thin dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .btn:active,
+    .btn.active {
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    }
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default:active,
+    .btn-default.active,
+    .open .dropdown-toggle.btn-default {
+        color: #333;
+        background-color: #ebebeb;
+        border-color: #adadad;
+    }
+
+    .btn-default:active,
+    .btn-default.active,
+    .open .dropdown-toggle.btn-default {
+        background-image: none;
+    }
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.text-primary {
+    color: #428bca;
+}

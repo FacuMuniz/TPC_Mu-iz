@@ -1,31 +1,8 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
     background-color: #ddd !important;
 }
-
-.bg-Yellow {
-    background-color: #ffcd00; /*ffff66*/
-    color: white;
-    height: 150px;
-    z-index: 100;
-}
-
-.bg-White {
-    background-color: white;
-    color: white;
-    height: 150px;
-    z-index: 1000000;
-    border-right: 3px solid white;
-}
-
-.bg-Menu {
-    background-color: #c6d9f1;
-    color: white !important;
-    /*height: 150px;*/
-    z-index: 1000000;
-    border-radius: 12px;
-}
-
-
 
 .d-flex {
     display: flex;
@@ -80,7 +57,9 @@
     color: #0092d2;
 }
 
-
+.logo-container {
+    margin-top: 3.5em;
+}
 
 .input-container {
     margin-top: 72px;
@@ -97,11 +76,11 @@
     text-align: left;
     color: #839399;
     background-color: #252424;
-    border: solid;
-    border-color: dimgrey
+    border: none;
+    border-bottom: 1px solid #839399;
 }
 
-.code {
+.password {
     margin: 57.5px 0 57.5px 0;
 }
 
@@ -126,7 +105,7 @@
     text-align: center;
 }
 
-.auth-btn {
+.login-btn {
     border: none;
     padding: 13px 62px 13px 62px;
     background-color: #0092d2;
@@ -139,4 +118,17 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+}
+
+.recover-password {
+    margin-top: 9px;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    color: #839399;
 }

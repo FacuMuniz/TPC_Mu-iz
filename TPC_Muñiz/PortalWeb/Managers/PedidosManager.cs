@@ -1,40 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TPC_Muñiz.Models;
-using ACCESO_DATOS;
-using System.Data.SqlClient;
-using System.Data;
-using System.Windows.Forms;
-using System.Configuration;
 
 namespace TPC_Muñiz.Managers
 {
-    public class MesasManager
+    class PedidosManager
     {
+
         private static string getConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["DBM"].ConnectionString;
         }
 
 
-        public List<Mesas> TraerMesas()
+        public BindingList<Pedidos> ListarPedidos(DateTime start, DateTime end, int mesa)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
                 try
                 {
-                    List<Mesas> lista = new List<Mesas>();
+                    BindingList<Pedidos> lista = new BindingList
+<Pedidos>();
                     DataTable dt = null;
                     int x = 0;
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("listar_mesa", cn)
+                    var cmd = new SqlCommand("listar_pedidos", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
+                    cmd.Parameters.AddWithValue("@datestart", start);
+
+                    cmd.Parameters.AddWithValue("@dateend", end);
+
+                    cmd.Parameters.AddWithValue("@mesa", mesa);
 
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();
@@ -45,13 +51,16 @@ namespace TPC_Muñiz.Managers
                     for (x = 0; x < dt.Rows.Count; x++)
                     {
 
-                        Mesas data = new Mesas();
+                        Pedidos data = new Pedidos();
 
                         data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
-                        data.Mesero = int.Parse(dt.Rows[x].ItemArray[1].ToString());
-                        data.Sillas = int.Parse(dt.Rows[x].ItemArray[2].ToString());
-                        data.Salon = int.Parse(dt.Rows[x].ItemArray[3].ToString());
-                        data.Habilitada = bool.Parse(dt.Rows[x].ItemArray[4].ToString());
+                        data.Idmesero = int.Parse(dt.Rows[x].ItemArray[01].ToString());
+                        data.Idmesa = int.Parse(dt.Rows[x].ItemArray[2].ToString());
+                        data.Idcomida = int.Parse(dt.Rows[x].ItemArray[3].ToString());
+                        data.Descripcion = dt.Rows[x].ItemArray[4].ToString();
+                        data.Hora = DateTime.Parse(dt.Rows[x].ItemArray[5].ToString());
+                        data.Precio = float.Parse(dt.Rows[x].ItemArray[6].ToString());
+                        
                         lista.Add(data);
                     }
 
@@ -63,8 +72,7 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                   
                     cn.Close();
                     return null;
                 }
@@ -73,25 +81,25 @@ namespace TPC_Muñiz.Managers
 
         }
 
-        public List<int> TraerMesasxMesero(int id)
+
+
+        public BindingList<Comida> TraerComidas()
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
                 try
                 {
-                    List<int> lista = new List<int>();
+                    BindingList<Comida> lista = new BindingList<Comida>();
                     DataTable dt = null;
                     int x = 0;
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("Mesaxmesero", cn)
+                    var cmd = new SqlCommand("listarcomidas", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
 
                     var da = new SqlDataAdapter(cmd);
-                    cmd.Parameters.AddWithValue("@id", id);
-
                     cn.Open();
                     da.Fill(ds);
 
@@ -99,8 +107,13 @@ namespace TPC_Muñiz.Managers
 
                     for (x = 0; x < dt.Rows.Count; x++)
                     {
-                        
-                        lista.Add(int.Parse(dt.Rows[x].ItemArray[0].ToString()));
+
+                        Comida data = new Comida();
+
+                        data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
+                        data.Descripcion = dt.Rows[x].ItemArray[1].ToString();
+                        data.Precio = float.Parse(dt.Rows[x].ItemArray[2].ToString());
+                        lista.Add(data);
                     }
 
 
@@ -111,8 +124,7 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                  
                     cn.Close();
                     return null;
                 }
@@ -123,27 +135,28 @@ namespace TPC_Muñiz.Managers
 
 
 
-        public string CargarMesas (Mesas mesa)
+        public List<int> CargarPedidos(Pedidos pedido)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
                 try
                 {
                     DataTable dt = null;
-                    
+
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("cargar_mesa", cn)
+                    var cmd = new SqlCommand("Cargar_Pedido", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    cmd.Parameters.AddWithValue("@idmesa", mesa.Id);
+                    cmd.Parameters.AddWithValue("@idmesa", pedido.Idmesa);
 
-                    cmd.Parameters.AddWithValue("@idmesero", mesa.Mesero);
+                    cmd.Parameters.AddWithValue("@idmesero", pedido.Idmesero);
 
-                    cmd.Parameters.AddWithValue("@cantsillas", mesa.Sillas);
+                    cmd.Parameters.AddWithValue("@idcomida", pedido.Idcomida);
 
+                    cmd.Parameters.AddWithValue("@descripcion", pedido.Descripcion);
 
-                    cmd.Parameters.AddWithValue("@habilitada", mesa.Habilitada);
+                    cmd.Parameters.AddWithValue("@precio", pedido.Precio);
 
 
 
@@ -153,9 +166,13 @@ namespace TPC_Muñiz.Managers
 
                     dt = ds.Tables[0];
 
-                    string result = "";
+                    List<int> result = new List<int>();
 
-                    result = dt.Rows[0].ItemArray[0].ToString();
+                    for(int x= 0; x < dt.Rows.Count; x++)
+                    {
+
+                        result.Add( int.Parse(dt.Rows[x].ItemArray[0].ToString()));
+                    }
 
 
 
@@ -166,8 +183,6 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
                     cn.Close();
                     return null;
                 }
@@ -175,102 +190,46 @@ namespace TPC_Muñiz.Managers
         }
 
 
-        public string abrirmesa(int id,int mesero)
+        public void RestarStock(int id)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
                 try
                 {
-                    string lista = "";
                     DataTable dt = null;
-                    int x = 0;
+
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("abrir_Mesa", cn)
+                    var cmd = new SqlCommand("RestarStock", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-
-
-                    var da = new SqlDataAdapter(cmd);
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    cmd.Parameters.AddWithValue("@idmesero", mesero);
-
-                    cn.Open();
-                    da.Fill(ds);
-
-                    dt = ds.Tables[0];
-
-                    for (x = 0; x < dt.Rows.Count; x++)
-                    {
-
-                        lista=dt.Rows[x].ItemArray[0].ToString();
-                    }
-
-
-
-
-                    cn.Close();
-                    return lista;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-
-                    cn.Close();
-                    return null;
-                }
-            }
-        }
-
-
-        public string verificarmesa(int id)
-        {
-            using (var cn = new SqlConnection(getConnectionString()))
-            {
-                try
-                {
-                    string lista = "";
-                    DataTable dt = null;
-                    int x = 0;
-                    var ds = new DataSet();
-                    var cmd = new SqlCommand("Verificarmesa", cn)
-                    {
-                        CommandType = CommandType.StoredProcedure
-                    };
 
 
                     var da = new SqlDataAdapter(cmd);
-                    cmd.Parameters.AddWithValue("@idmesa", id);
-
                     cn.Open();
                     da.Fill(ds);
 
                     dt = ds.Tables[0];
 
-                    for (x = 0; x < dt.Rows.Count; x++)
-                    {
+                   
 
-                        lista = dt.Rows[x].ItemArray[0].ToString();
-                    }
 
 
 
 
                     cn.Close();
-                    return lista;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                   
                     cn.Close();
-                    return null;
                 }
             }
         }
+
 
 
     }
 }
-
