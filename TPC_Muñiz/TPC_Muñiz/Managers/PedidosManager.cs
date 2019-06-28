@@ -215,9 +215,7 @@ namespace TPC_Muñiz.Managers
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();
                     da.Fill(ds);
-
-                    dt = ds.Tables[0];
-
+                    
                    
 
 

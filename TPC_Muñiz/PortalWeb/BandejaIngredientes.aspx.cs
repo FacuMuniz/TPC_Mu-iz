@@ -42,6 +42,7 @@ namespace PortalWeb
             Add.Visible = false;
             Mod.Visible = true;
             list.Visible = false;
+          
         }
 
         protected void Showdel(object sender, EventArgs e)
@@ -50,11 +51,29 @@ namespace PortalWeb
             Add.Visible = false;
             Mod.Visible = false;
             list.Visible = false;
+            StockManager stock = new StockManager();
+            BindingList<Ingrediente> lista = stock.ListarStock("");
+            ddlIng.DataSource = lista;
+
+            ddlIng.DataTextField = "Descripcion";
+            ddlIng.DataValueField = "Id";
         }
 
-        
+        protected void btnBorrar_ServerClick(object sender, EventArgs e)
+        {
 
-             protected void startUpdate(object sender, RepeaterCommandEventArgs e)
+            StockManager stock = new StockManager();
+                stock.Delstocks(int.Parse(ddlIng.SelectedValue.ToString()));
+            BindingList<Ingrediente> lista = stock.ListarStock("");
+            ddlIng.DataSource = lista;
+
+            ddlIng.DataTextField = "Descripcion";
+            ddlIng.DataValueField = "Id";
+
+
+        }
+
+        protected void startUpdate(object sender, RepeaterCommandEventArgs e)
         {
             BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
 
@@ -81,7 +100,15 @@ namespace PortalWeb
 
         }
 
+        protected void btnnuevaCarga_ServerClick(object sender, EventArgs e)
+        {
+            lista.AddNewstocks( txtdescripcion.Value, int.Parse(txtcant.Value), txttipo.Value);
+            newdesc.Value = "";
+            newcant.Value = "";
+            newtipo.Value = "";
+            
 
+        }
 
 
         protected void btnLimpiarFiltros_Click(object sender, EventArgs e)

@@ -1,36 +1,35 @@
-﻿using System;
+﻿using PortalWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using TPC_Muñiz.Models;
 
-namespace TPC_Muñiz.Managers
+namespace PortalWeb.Managers
 {
-    class StockManager
+    public class UserManager
     {
-
         private static string getConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["DBM"].ConnectionString;
         }
 
 
-        public BindingList<Ingrediente> ListarStock(string param)
+        public BindingList<Usuario> ListarStock(string param)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
                 try
                 {
-                    BindingList<Ingrediente> lista = new BindingList<Ingrediente>();
+                    BindingList<Usuario> lista = new BindingList<Usuario>();
                     DataTable dt = null;
                     int x = 0;
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("listar_stock", cn)
+                    var cmd = new SqlCommand("listarusuarios", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
@@ -46,13 +45,14 @@ namespace TPC_Muñiz.Managers
                     for (x = 0; x < dt.Rows.Count; x++)
                     {
 
-                        Ingrediente data = new Ingrediente();
+                        Usuario data = new Usuario();
 
                         data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
-                        data.Descripcion = dt.Rows[x].ItemArray[1].ToString();
-                        data.Cantidad = float.Parse(dt.Rows[x].ItemArray[2].ToString());
-                        data.Tipocant = dt.Rows[x].ItemArray[3].ToString();
-                       
+                        data.User = dt.Rows[x].ItemArray[1].ToString();
+                        data.Tipo= int.Parse(dt.Rows[x].ItemArray[2].ToString());
+                        data.Pass = dt.Rows[x].ItemArray[3].ToString();
+                        data.Nombre = dt.Rows[x].ItemArray[4].ToString();
+
                         lista.Add(data);
                     }
 
@@ -64,7 +64,7 @@ namespace TPC_Muñiz.Managers
                 }
                 catch (Exception ex)
                 {
-                   
+
                     cn.Close();
                     return null;
                 }
@@ -74,7 +74,11 @@ namespace TPC_Muñiz.Managers
         }
 
 
-        public BindingList<Ingrediente> Cargarstocks(int id, int cant)
+       
+
+
+
+        public void modstocks(int id, string user, int tipo, string contra, string nombre)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
@@ -83,84 +87,32 @@ namespace TPC_Muñiz.Managers
                     DataTable dt = null;
 
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("cargar_stocks", cn)
+                    var cmd = new SqlCommand("Mod_user", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    cmd.Parameters.AddWithValue("@cant", cant);
+                    cmd.Parameters.AddWithValue("@usuario", user);
+
+
+                    cmd.Parameters.AddWithValue("@tipo", tipo);
+
+
+                    cmd.Parameters.AddWithValue("@contra", contra);
+
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
 
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();
                     da.Fill(ds);
-
-                    dt = ds.Tables[0];
-
-                    BindingList<Ingrediente> lista = new BindingList<Ingrediente>();
-
-                    Ingrediente data = new Ingrediente();
-
-                    data.Id = int.Parse(dt.Rows[0].ItemArray[0].ToString());
-                    data.Descripcion = dt.Rows[0].ItemArray[1].ToString();
-                    data.Cantidad = float.Parse(dt.Rows[0].ItemArray[2].ToString());
-                    data.Tipocant = dt.Rows[0].ItemArray[3].ToString();
-
-                    lista.Add(data);
-
-
-
-
-
-                    cn.Close();
-                    return lista;
-                }
-                catch (Exception ex)
-                {
-                   
-                    cn.Close();
-                    return null;
-                }
-            }
-        }
-
-
-
-
-        public void modstocks(int id,string desc, int cant,string tipo)
-        {
-            using (var cn = new SqlConnection(getConnectionString()))
-            {
-                try
-                {
-                    DataTable dt = null;
-
-                    var ds = new DataSet();
-                    var cmd = new SqlCommand("Mod_ing", cn)
-                    {
-                        CommandType = CommandType.StoredProcedure
-                    };
-                    cmd.Parameters.AddWithValue("@id", id);
-
-                    cmd.Parameters.AddWithValue("@desc", desc);
-
-
-                    cmd.Parameters.AddWithValue("@cant", cant);
-
-
-                    cmd.Parameters.AddWithValue("@tipocant", tipo);
-
-                    var da = new SqlDataAdapter(cmd);
-                    cn.Open();
-                    da.Fill(ds);
-
-                    dt = ds.Tables[0];
                     
 
 
 
 
 
+
                     cn.Close();
                 }
                 catch (Exception ex)
@@ -171,7 +123,7 @@ namespace TPC_Muñiz.Managers
             }
         }
 
-        public void AddNewstocks(string desc, int cant, string tipo)
+        public void AddNewstocks(string user, int tipo, string contra, string nombre)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
@@ -180,24 +132,24 @@ namespace TPC_Muñiz.Managers
                     DataTable dt = null;
 
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("agregaring", cn)
+                    var cmd = new SqlCommand("AgregarUsuario", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-
-                    cmd.Parameters.AddWithValue("@desc", desc);
-
-
-                    cmd.Parameters.AddWithValue("@cant", cant);
+                    cmd.Parameters.AddWithValue("@usuario", user);
 
 
-                    cmd.Parameters.AddWithValue("@tipocant", tipo);
+                    cmd.Parameters.AddWithValue("@tipo", tipo);
+
+
+                    cmd.Parameters.AddWithValue("@contra", contra);
+
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
 
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();
                     da.Fill(ds);
 
-                    dt = ds.Tables[0];
 
 
 
@@ -224,18 +176,18 @@ namespace TPC_Muñiz.Managers
                 {
 
                     var ds = new DataSet();
-                    var cmd = new SqlCommand("eliminaring", cn)
+                    var cmd = new SqlCommand("eliminaruser", cn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    
+
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();
                     da.Fill(ds);
-                    
+
 
 
 
@@ -255,4 +207,5 @@ namespace TPC_Muñiz.Managers
 
 
     }
+
 }

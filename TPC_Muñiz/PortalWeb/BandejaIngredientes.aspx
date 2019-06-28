@@ -11,9 +11,9 @@
              <div class=" d-flex justify-content-center align-items-center">
                  <div id="searchtaskdiv">
                    <asp:LinkButton ID="ShowList" value="" runat="server" OnClick="showlist" ToolTip="Listar ingredientes" Class="btn btn-success btn-circle2 fas fa-align-justify" style="font-size: xx-large"></asp:LinkButton>
-                   <asp:LinkButton ID="Adding" value="" runat="server" OnClick="Showadd" ToolTip="Agregar ingredientes" Class="btn btn-danger btn-circle2 fas fa-tasks" style="font-size: xx-large"></asp:LinkButton>
-                   <asp:LinkButton ID="Moding" value="" runat="server" OnClick="Showmod" ToolTip="Modificar ingredientes" Class="btn btn-success btn-circle2 fas fa-search" style="font-size: xx-large"></asp:LinkButton>
-                   <asp:LinkButton ID="Deleteing" value="" runat="server" OnClick="Showdel" ToolTip="Borrar ingredientes" Class="btn btn-danger btn-circle2 fas fa-clipboard-list" style="font-size: xx-large"></asp:LinkButton>
+                   <asp:LinkButton ID="Adding" value="" runat="server" OnClick="Showadd" ToolTip="Agregar ingredientes" Class="btn btn-danger btn-circle2 fas fa-plus" style="font-size: xx-large"></asp:LinkButton>
+                   <asp:LinkButton ID="Moding" value="" runat="server" OnClick="Showmod" ToolTip="Modificar ingredientes" Class="btn btn-success btn-circle2 fas fa-pen" style="font-size: xx-large"></asp:LinkButton>
+                   <asp:LinkButton ID="Deleteing" value="" runat="server" OnClick="Showdel" ToolTip="Borrar ingredientes" Class="btn btn-danger btn-circle2 fas fa-trash-alt" style="font-size: xx-large"></asp:LinkButton>
                    
                   </div>
             </div>  
@@ -82,6 +82,45 @@
 
     <asp:Panel id="Add" runat="server" Visible="false">
 
+         <div class="header-container d-flex flex-direction-column">
+            <label class="header">Ingredientes</label>
+            <label class="sub-header">Carga de Datos</label>
+        </div>
+        <div class=" d-flex justify-content-center">
+            <div class="d-flex flex-direction-column">
+                
+                <div class="input-container d-flex flex-direction-column">
+             
+                     <div class="d-flex justify-content-center">
+                         <label class="header mr-4">Descripcion</label>
+                        <input type="text" class=" mb-3" style="width:230px" placeholder="Descripcion" runat="server" id="newdesc" maxlength="30"/>
+                        
+                    </div>
+                     <div class="d-flex justify-content-center">
+                         <label class="header mr-5">Cantidad</label>
+                        <input type="text" class=" mb-3" style="width:230px" placeholder="Cantidad" runat="server" id="newcant" maxlength="30"/>
+                        
+                    </div>
+                     <div class="d-flex justify-content-center">
+                         <label class="header mr-4">Tipo Cantidad</label>
+                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Tipo de Medicion (kg/l/U)" runat="server" id="newtipo" maxlength="4"/>
+                        
+                    </div>
+                     <div class="d-flex justify-content-center">
+                 
+                   
+                    <div class="d-flex justify-content-center">
+                        <input type="button" class="auth-btn mt-4 mr-5" value="Aceptar" runat="server" id="btnNewIng" onserverclick="btnnuevaCarga_ServerClick"/>
+                        <input type="button" class="auth-btn mt-4 ml-5" value="Cancelar" runat="server" id="btncancelNew" onserverclick="btnCancelcarga_ServerClick"/>
+                    </div>
+
+                      <div class="d-flex justify-content-center">
+                        <asp:label class="sub-header" runat="server" Visible="false" ID="Label1"> DATOS INVALIDOS, VERIFIQUE LOS CAMPOS ANTES DE CONTINUAR </asp:label>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
     
 
     </asp:Panel>
@@ -149,7 +188,7 @@
          <asp:Panel id="pnlCarga" runat="server" visible="false">
         <div class="header-container d-flex flex-direction-column">
             <label class="header">Ingredientes</label>
-            <label class="sub-header">Modificacion de Datos</label>
+            <label class="sub-header">Modificar de Datos</label>
         </div>
         <div class=" d-flex justify-content-center">
             <div class="d-flex flex-direction-column">
@@ -194,6 +233,24 @@
 
     <asp:Panel id="Delete" runat="server" Visible="false">
 
+         <div class="header-container d-flex flex-direction-column">
+            <label class="header">Ingredientes</label>
+            <label class="sub-header">Carga de Datos</label>
+        </div>
+        <div class=" d-flex justify-content-center">
+            <div class="d-flex flex-direction-column">
+                
+                <div class="input-container d-flex flex-direction-column">
+             
+                    <asp:DropDownList ID="ddlIng" runat="server">
+                    </asp:DropDownList>
+                    <div class="d-flex justify-content-center">
+                        <input type="button" class="auth-btn mt-4 mr-5" value="Eliminar" runat="server" id="btndel" onserverclick="btnBorrar_ServerClick"/>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
     </asp:Panel>
 

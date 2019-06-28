@@ -20,6 +20,9 @@ namespace TPC_Muñiz
         PedidosManager manager = new PedidosManager();
         float total = 0;
         BindingList<Comida> lista = new BindingList<Comida>();
+
+        BindingList<Comida> lista2 = new BindingList<Comida>();
+
         List<Pedidos> pedidos = new List<Pedidos>();
         List<float> precios = new List<float>();
         int aux = 0;
@@ -47,14 +50,14 @@ namespace TPC_Muñiz
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Comida nuevo = new Comida();
-            nuevo.Id = int.Parse(cmbcomidas.ValueMember);
-            nuevo.Descripcion = cmbcomidas.DisplayMember;
+            nuevo.Id = int.Parse(cmbcomidas.SelectedValue.ToString());
+            nuevo.Descripcion = cmbcomidas.Text;
             nuevo.Precio = precios[nuevo.Id];
             Pedidos pedido = new Pedidos();
             pedido.Idmesa = int.Parse(lblid.Text);
             pedido.Idmesero = int.Parse(lblidmesero.Text);
-            pedido.Idcomida = int.Parse(cmbcomidas.ValueMember);
-            pedido.Descripcion = cmbcomidas.DisplayMember;
+            pedido.Idcomida = int.Parse(cmbcomidas.SelectedValue.ToString());
+            pedido.Descripcion = cmbcomidas.Text;
             pedido.Precio = precios[nuevo.Id];
 
             List<int> ingredientes = manager.CargarPedidos(pedido);
@@ -72,8 +75,8 @@ namespace TPC_Muñiz
             cmbcomidas.DisplayMember = "Descripcion";
             cmbcomidas.ValueMember = "id";
 
-            lista.Add(nuevo);
-            dgvPedidos.DataSource = lista;
+            lista2.Add(nuevo);
+            dgvPedidos.DataSource = lista2;
             dgvPedidos.Refresh();
             total += nuevo.Precio;
 
