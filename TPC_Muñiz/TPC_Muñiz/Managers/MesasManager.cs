@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Configuration;
+using System.ComponentModel;
 
 namespace TPC_Muñiz.Managers
 {
@@ -48,10 +49,12 @@ namespace TPC_Muñiz.Managers
                         Mesas data = new Mesas();
 
                         data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
+
+                        data.Nombre = dt.Rows[x].ItemArray[2].ToString();
                         data.Mesero = int.Parse(dt.Rows[x].ItemArray[1].ToString());
-                        data.Sillas = int.Parse(dt.Rows[x].ItemArray[2].ToString());
-                        data.Salon = int.Parse(dt.Rows[x].ItemArray[3].ToString());
-                        data.Habilitada = bool.Parse(dt.Rows[x].ItemArray[4].ToString());
+                        data.Sillas = int.Parse(dt.Rows[x].ItemArray[3].ToString());
+                        data.Salon = int.Parse(dt.Rows[x].ItemArray[4].ToString());
+                        data.Habilitada = bool.Parse(dt.Rows[x].ItemArray[5].ToString());
                         lista.Add(data);
                     }
 
@@ -199,13 +202,13 @@ namespace TPC_Muñiz.Managers
                     cn.Open();
                     da.Fill(ds);
 
-                    dt = ds.Tables[0];
+                    //dt = ds.Tables[0];
 
-                    for (x = 0; x < dt.Rows.Count; x++)
-                    {
+                    //for (x = 0; x < dt.Rows.Count; x++)
+                    //{
 
-                        lista=dt.Rows[x].ItemArray[0].ToString();
-                    }
+                    //    lista=dt.Rows[x].ItemArray[0].ToString();
+                    //}
 
 
 
@@ -271,6 +274,9 @@ namespace TPC_Muñiz.Managers
         }
 
 
+
+
+       
     }
 }
 

@@ -40,7 +40,9 @@ namespace TPC_Muñiz
             }
             else
             {
-                MessageBox.Show(listmesas.verificarmesa(int.Parse(cmbMesas.Text.ToString())));
+                
+                frmPedidosMesa frm = new frmPedidosMesa(int.Parse(cmbMesas.Text.ToString()), int.Parse(lblid.Text), DateTime.Parse(listmesas.verificarmesa(int.Parse(cmbMesas.Text.ToString()))));
+                frm.Show();
             }
         }
 

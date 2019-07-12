@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TPC_Muñiz.Models
 {
-    class Pedidos
+    public class Pedidos
     {
         public int Id { get; set; }
         public int Idmesero { get; set; }

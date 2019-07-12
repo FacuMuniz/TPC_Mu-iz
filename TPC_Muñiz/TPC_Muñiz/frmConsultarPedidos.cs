@@ -16,21 +16,37 @@ namespace TPC_Muñiz
     {
         public frmConsultarPedidos()
         {
-            InitializeComponent();
-            MesasManager listmesas = new MesasManager();
-            cmbMesas.DataSource = listmesas.TraerMesas();
-            cmbMesas.DisplayMember = "Id";
-            cmbMesas.ValueMember = "Salon";
+            try
+            {
 
+
+                InitializeComponent();
+                MesasManager listmesas = new MesasManager();
+                cmbMesas.DataSource = listmesas.TraerMesas();
+                cmbMesas.DisplayMember = "Id";
+                cmbMesas.ValueMember = "Id";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            PedidosManager lista = new PedidosManager();
-            BindingList < Pedidos > pedido = lista.ListarPedidos(dtpdesde.Value, dtphasta.Value, int.Parse(cmbMesas.SelectedValue.ToString()));
-            dataGridView1.DataSource = pedido;
-            dataGridView1.Refresh();
+
+                PedidosManager lista = new PedidosManager();
+                BindingList<Pedidos> pedido = lista.ListarPedidos(dtpdesde.Value, dtphasta.Value, int.Parse(cmbMesas.SelectedValue.ToString()));
+                dataGridView1.DataSource = pedido;
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

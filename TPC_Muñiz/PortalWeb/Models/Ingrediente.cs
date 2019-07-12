@@ -13,4 +13,12 @@ namespace TPC_Muñiz.Models
         public float Cantidad { get; set; }
         public string Tipocant { get; set; }
     }
+
+    class Item
+    {
+        public int item { get; set; }
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public float Cantidad { get; set; }
+    }
 }

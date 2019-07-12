@@ -99,6 +99,12 @@
                      <div class="d-flex justify-content-center">
                          <label class="header mr-5">Cantidad</label>
                         <input type="text" class=" mb-3" style="width:230px" placeholder="Cantidad" runat="server" id="newcant" maxlength="30"/>
+                           <cc1:FilteredTextBoxExtender
+    ID="FilteredTextBoxExtender2"
+    runat="server"
+    TargetControlID="newcant"
+    ValidChars="0123456789.">
+</cc1:FilteredTextBoxExtender>
                         
                     </div>
                      <div class="d-flex justify-content-center">
@@ -203,6 +209,12 @@
                      <div class="d-flex justify-content-center">
                          <label class="header mr-5">Cantidad</label>
                         <input type="text" class=" mb-3" style="width:230px" placeholder="Cantidad" runat="server" id="txtcant" maxlength="30"/>
+                         <cc1:FilteredTextBoxExtender
+    ID="FilteredTextBoxExtender1"
+    runat="server"
+    TargetControlID="txtcant"
+    ValidChars="0123456789.">
+</cc1:FilteredTextBoxExtender>
                         
                     </div>
                      <div class="d-flex justify-content-center">

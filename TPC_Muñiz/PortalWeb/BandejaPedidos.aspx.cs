@@ -24,12 +24,19 @@ namespace PortalWeb
 
         protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            PedidosManager lista = new PedidosManager();
-            BindingList<Pedidos> pedido = lista.ListarPedidos(DateTime.Parse(datepickerfrom.Value), DateTime.Parse(datepickerto.Value), int.Parse(txtmesa.Text.ToString()));
-            gvPedidos.DataSource = pedido;
-            gvPedidos.DataBind();
 
+                PedidosManager lista = new PedidosManager();
+                BindingList<Pedidos> pedido = lista.ListarPedidos(DateTime.Parse(datepickerfrom.Value), DateTime.Parse(datepickerto.Value), int.Parse(txtmesa.Text.ToString()));
+                ingredientes4.DataSource = pedido;
+                ingredientes4.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
     }

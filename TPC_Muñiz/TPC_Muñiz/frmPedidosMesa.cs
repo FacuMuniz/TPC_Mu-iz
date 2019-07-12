@@ -29,6 +29,10 @@ namespace TPC_Muñiz
 
         public frmPedidosMesa(int id,int idmesero)
         {
+            try
+            {
+
+            
             InitializeComponent();
             lblidmesero.Text = idmesero.ToString();
             lblid.Text = id.ToString();
@@ -43,45 +47,92 @@ namespace TPC_Muñiz
                 precios.Add(lista[x].Precio);
 
             }
-            this.ControlBox = false;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        public frmPedidosMesa(int id, int idmesero,DateTime hora)
+        {
+            try
+            {
+
+                lista2 =  manager.ListarPedidosxAbertura(id, hora);
+                for(int x=0; x<lista2.Count();x++)
+                {
+                    total += int.Parse(lista2[x].Precio.ToString());
+                }
+                InitializeComponent();
+                lblidmesero.Text = idmesero.ToString();
+                lblid.Text = id.ToString();
+                lbltotal.Text = total.ToString();
+                lista = manager.TraerComidas();
+                cmbcomidas.DataSource = lista;
+                cmbcomidas.DisplayMember = "Descripcion";
+                cmbcomidas.ValueMember = "id";
+                for (int x = 0; x < lista.Count(); x++)
+                {
+
+                    precios.Add(lista[x].Precio);
+
+                }
+
+                dgvPedidos.DataSource = lista2;
+                dgvPedidos.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Comida nuevo = new Comida();
-            nuevo.Id = int.Parse(cmbcomidas.SelectedValue.ToString());
-            nuevo.Descripcion = cmbcomidas.Text;
-            nuevo.Precio = precios[nuevo.Id];
-            Pedidos pedido = new Pedidos();
-            pedido.Idmesa = int.Parse(lblid.Text);
-            pedido.Idmesero = int.Parse(lblidmesero.Text);
-            pedido.Idcomida = int.Parse(cmbcomidas.SelectedValue.ToString());
-            pedido.Descripcion = cmbcomidas.Text;
-            pedido.Precio = precios[nuevo.Id];
-
-            List<int> ingredientes = manager.CargarPedidos(pedido);
-            for (int x = 0; x < ingredientes.Count(); x++)
+            try
             {
 
-                manager.RestarStock(ingredientes[x]);
 
+                Comida nuevo = new Comida();
+                nuevo.Id = int.Parse(cmbcomidas.SelectedValue.ToString());
+                nuevo.Descripcion = cmbcomidas.Text;
+                nuevo.Precio = precios[nuevo.Id-1];
+                Pedidos pedido = new Pedidos();
+                pedido.Idmesa = int.Parse(lblid.Text);
+                pedido.Idmesero = int.Parse(lblidmesero.Text);
+                pedido.Idcomida = int.Parse(cmbcomidas.SelectedValue.ToString());
+                pedido.Descripcion = cmbcomidas.Text;
+                pedido.Precio = precios[nuevo.Id];
+
+                List<int> ingredientes = manager.CargarPedidos(pedido);
+                for (int x = 0; x < ingredientes.Count(); x++)
+                {
+
+                    manager.RestarStock(ingredientes[x]);
+
+                }
+
+
+                //se carga nuevamente el combo box para eliminar las comidas que ya no presenten ingredientes en stock.
+                lista = manager.TraerComidas();
+                cmbcomidas.DataSource = lista;
+                cmbcomidas.DisplayMember = "Descripcion";
+                cmbcomidas.ValueMember = "id";
+
+                lista2.Add(nuevo);
+                dgvPedidos.DataSource = lista2;
+                dgvPedidos.Refresh();
+                total += nuevo.Precio;
+
+                lbltotal.Text = total.ToString();
             }
-
-
-            //se carga nuevamente el combo box para eliminar las comidas que ya no presenten ingredientes en stock.
-            lista = manager.TraerComidas();
-            cmbcomidas.DataSource = lista;
-            cmbcomidas.DisplayMember = "Descripcion";
-            cmbcomidas.ValueMember = "id";
-
-            lista2.Add(nuevo);
-            dgvPedidos.DataSource = lista2;
-            dgvPedidos.Refresh();
-            total += nuevo.Precio;
-
-            lbltotal.Text = total.ToString();
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -98,6 +149,7 @@ namespace TPC_Muñiz
                 SqlParameter[] VectorParam = new SqlParameter[2]; //no funciona con lista, aqui se debe agregar la cantidad de parametros totales
 
                 accesoDatos.agregarParametroSP(VectorParam, 0, "@id", System.Data.SqlDbType.Int, int.Parse(lblid.Text)); // AGREGO UN PARAMETRO AL VECTOR EN ESA POSICION
+                accesoDatos.agregarParametroSP(VectorParam, 1, "@monto", System.Data.SqlDbType.Float, float.Parse(lbltotal.Text)); // AGREGO UN PARAMETRO AL VECTOR EN ESA POSICION
 
 
 
@@ -109,14 +161,19 @@ namespace TPC_Muñiz
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 accesoDatos.cerrarConexion();//CIERRO CONEXION
             }
 
-            Environment.Exit(0);
+            this.Close();
         }
+
+       
+
+
+
     }
 }

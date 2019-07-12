@@ -80,6 +80,7 @@
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(121, 20);
             this.txtCant.TabIndex = 4;
+            this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPurchasePrice_KeyPress);
             // 
             // dgvStocks
             // 

@@ -16,20 +16,53 @@ namespace TPC_Muñiz
     {
         public frmCargarStocks()
         {
-            InitializeComponent();
-            StockManager stock = new StockManager();
-            BindingList<Ingrediente> lista = stock.ListarStock("");
-            cmbIngrediente.DataSource = lista;
-            cmbIngrediente.DisplayMember = "Descripcion";
-            cmbIngrediente.ValueMember = "Id";
+            try
+            {
+
+
+                InitializeComponent();
+                StockManager stock = new StockManager();
+                BindingList<Ingrediente> lista = stock.ListarStock("");
+                cmbIngrediente.DataSource = lista;
+                cmbIngrediente.DisplayMember = "Descripcion";
+                cmbIngrediente.ValueMember = "Id";
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
         }
 
         private void btnCagar_Click(object sender, EventArgs e)
         {
-            StockManager stock = new StockManager();
-            BindingList<Ingrediente> lista = stock.Cargarstocks(int.Parse(cmbIngrediente.SelectedValue.ToString()), int.Parse(txtCant.Text));
-            dgvStocks.DataSource = lista;
-            dgvStocks.Refresh();
+            try
+            {
+
+
+                StockManager stock = new StockManager();
+                txtCant.Text.Replace(',', '.');
+                BindingList<Ingrediente> lista = stock.Cargarstocks(int.Parse(cmbIngrediente.SelectedValue.ToString()), float.Parse(txtCant.Text));
+                dgvStocks.DataSource = lista;
+                dgvStocks.Refresh();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+        }
+
+        private void txtPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validate(e);
+        }
+
+        private void Validate(KeyPressEventArgs E)
+        {
+            if (!char.IsNumber(E.KeyChar) & (Keys)E.KeyChar != Keys.Back
+            & E.KeyChar != '.')
+            {
+                E.Handled = true;
+            }
         }
     }
 }

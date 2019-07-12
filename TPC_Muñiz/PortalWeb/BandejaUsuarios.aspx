@@ -19,17 +19,7 @@
     <asp:Panel id="list" runat="server">
 
             <asp:Panel ID="Panel1" runat="server" >
-                <div class="form-inline justify-content-center mt-2">
-                    <div class="form-group">
-                        <label class="sr-only">Ingrediente</label>
-                        <asp:TextBox CssClass="form-control" ID="txtmesa" runat="server" placeholder="Mesa"></asp:TextBox>
-                    </div>
-                   
-                    <div class="btn-group ml-1" role="group" aria-label="Botones filtrar">
-                        
-                        <asp:Button ID="Button2" type="submit" runat="server" CssClass="btn btn-secondary" Text="Limpiar Filtros" OnClick="btnLimpiarFiltros_Click"></asp:Button>
-                    </div>
-                </div>
+         
             </asp:Panel>
 
         <asp:Panel ID="pnlProyectos" CssClass="tblProyectos" runat="server">
@@ -93,23 +83,23 @@
                 <div class="input-container d-flex flex-direction-column">
              
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-4">Descripcion</label>
+                         <label class="header mr-4">Usuario</label>
                         <input type="text" class=" mb-3" style="width:230px" placeholder="Usuario" runat="server" id="newdesc" maxlength="30"/>
                         
                     </div>
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-5">Cantidad</label>
+                         <label class="header mr-5">Tipo</label>
                         <input type="text" class=" mb-3" style="width:230px" placeholder="tipo" runat="server" id="newcant" maxlength="30"/>
                         
                     </div>
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-4">Tipo Cantidad</label>
-                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Contraseña" runat="server" id="newtipo" maxlength="4"/>
+                         <label class="header mr-4">Contraseña</label>
+                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Contraseña" runat="server" id="newtipo" maxlength="30"/>
                         
                     </div>
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-4">Tipo Cantidad</label>
-                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Nombre" runat="server" id="Text1" maxlength="4"/>
+                         <label class="header mr-4">Nombre</label>
+                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Nombre" runat="server" id="Text1" maxlength="30"/>
                         
                     </div>
                      <div class="d-flex justify-content-center">
@@ -133,19 +123,7 @@
 
     <asp:Panel id="Mod" runat="server" Visible="false">
 
-               <asp:Panel ID="Panel2" runat="server" >
-                <div class="form-inline justify-content-center mt-2">
-                    <div class="form-group">
-                        <label class="sr-only">Ingrediente</label>
-                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Mesa"></asp:TextBox>
-                    </div>
-                   
-                    <div class="btn-group ml-1" role="group" aria-label="Botones filtrar">
-                        
-                        <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-secondary" Text="Limpiar Filtros" OnClick="btnListMod_Click"></asp:Button>
-                    </div>
-                </div>
-            </asp:Panel>
+             
 
         <asp:Panel ID="pnlCargadiv" CssClass="tblProyectos" runat="server">
             <table id="tblingrediente2" class="tblProyectos">
@@ -208,23 +186,24 @@
                 <div class="input-container d-flex flex-direction-column">
              
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-4">Descripcion</label>
+                         <label class="header mr-4">Usuario</label>
                         <input type="text" class=" mb-3" style="width:230px" placeholder="Usuario" runat="server" id="txtdescripcion" maxlength="30"/>
                         
                     </div>
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-5">Cantidad</label>
-                        <input type="text" class=" mb-3" style="width:230px" placeholder="Tipo" runat="server" id="txtcant" maxlength="30"/>
+                         <label class="header ml-4 mr-5 mb-1">Tipo</label>
+                         <asp:DropDownList ID="ddltipo" runat="server"><asp:ListItem Text="Admin" Value="1"></asp:ListItem>
+            <asp:ListItem Text="Mesero" Value="2"></asp:ListItem></asp:DropDownList>
                         
                     </div>
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-4">Tipo Cantidad</label>
-                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Contraseña" runat="server" id="txttipo" maxlength="4"/>
+                         <label class="header mr-4">Contraseña</label>
+                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Contraseña" runat="server" id="txttipo" maxlength="30"/>
                         
                     </div>
                      <div class="d-flex justify-content-center">
-                         <label class="header mr-4">Tipo Cantidad</label>
-                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Nombre" runat="server" id="Text2" maxlength="4"/>
+                         <label class="header mr-4">Nombre</label>
+                        <input type="text" class=" mb-3"  style="width:230px" placeholder="Nombre" runat="server" id="Text2" maxlength="30"/>
                         
                     </div>
                      <div class="d-flex justify-content-center">

@@ -19,7 +19,7 @@ namespace PortalWeb.Managers
         }
 
 
-        public BindingList<Usuario> ListarStock(string param)
+        public BindingList<Usuario> ListarStock()
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
@@ -33,8 +33,7 @@ namespace PortalWeb.Managers
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-
-                    cmd.Parameters.AddWithValue("@param", param);
+                    
 
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();
@@ -142,7 +141,7 @@ namespace PortalWeb.Managers
                     cmd.Parameters.AddWithValue("@tipo", tipo);
 
 
-                    cmd.Parameters.AddWithValue("@contra", contra);
+                    cmd.Parameters.AddWithValue("@cont", contra);
 
                     cmd.Parameters.AddWithValue("@nombre", nombre);
 

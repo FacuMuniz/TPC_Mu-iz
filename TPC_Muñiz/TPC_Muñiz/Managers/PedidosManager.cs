@@ -55,7 +55,7 @@ namespace TPC_Muñiz.Managers
                         Pedidos data = new Pedidos();
 
                         data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
-                        data.Idmesero = int.Parse(dt.Rows[x].ItemArray[01].ToString());
+                        data.Idmesero = int.Parse(dt.Rows[x].ItemArray[1].ToString());
                         data.Idmesa = int.Parse(dt.Rows[x].ItemArray[2].ToString());
                         data.Idcomida = int.Parse(dt.Rows[x].ItemArray[3].ToString());
                         data.Descripcion = dt.Rows[x].ItemArray[4].ToString();
@@ -233,7 +233,60 @@ namespace TPC_Muñiz.Managers
             }
         }
 
+        public BindingList<Comida> ListarPedidosxAbertura(int mesa, DateTime hora)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    BindingList<Comida> lista = new BindingList<Comida>();
+                    DataTable dt = null;
+                    int x = 0;
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("TraerPedidos", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    cmd.Parameters.AddWithValue("@hora", hora);
+
+                    cmd.Parameters.AddWithValue("@idmesa", mesa);
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+                    dt = ds.Tables[0];
+
+                    for (x = 0; x < dt.Rows.Count; x++)
+                    {
+
+                        Comida data = new Comida();
+
+                        data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
+                        data.Descripcion = dt.Rows[x].ItemArray[1].ToString();
+                        data.Precio = float.Parse(dt.Rows[x].ItemArray[2].ToString());
+
+                        lista.Add(data);
+                    }
+
+
+
+
+                    cn.Close();
+                    return lista;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                    cn.Close();
+                    return null;
+                }
+            }
+
+
+        }
 
     }
 }

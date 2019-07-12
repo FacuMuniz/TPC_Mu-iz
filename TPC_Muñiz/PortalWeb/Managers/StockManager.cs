@@ -127,7 +127,7 @@ namespace TPC_Muñiz.Managers
 
 
 
-        public void modstocks(int id,string desc, int cant,string tipo)
+        public void modstocks(int id,string desc, float cant,string tipo)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
@@ -153,8 +153,7 @@ namespace TPC_Muñiz.Managers
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();
                     da.Fill(ds);
-
-                    dt = ds.Tables[0];
+                    
                     
 
 

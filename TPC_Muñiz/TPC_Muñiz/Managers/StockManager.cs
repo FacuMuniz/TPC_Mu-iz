@@ -76,7 +76,7 @@ namespace TPC_Muñiz.Managers
         }
 
 
-        public BindingList<Ingrediente> Cargarstocks(int id, int cant)
+        public BindingList<Ingrediente> Cargarstocks(int id, float cant)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {

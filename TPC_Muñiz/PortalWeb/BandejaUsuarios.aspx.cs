@@ -19,7 +19,11 @@ namespace PortalWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            BindingList<Usuario> pedido = lista.ListarStock();
 
+            pedido = lista.ListarStock();
+            ingredientes.DataSource = pedido;
+            ingredientes.DataBind();
         }
 
         protected void showlist(object sender, EventArgs e)
@@ -28,6 +32,12 @@ namespace PortalWeb
             Add.Visible = false;
             Mod.Visible = false;
             list.Visible = true;
+
+            BindingList<Usuario> pedido = lista.ListarStock();
+
+            pedido = lista.ListarStock();
+            ingredientes.DataSource = pedido;
+            ingredientes.DataBind();
         }
 
         protected void Showadd(object sender, EventArgs e)
@@ -44,96 +54,143 @@ namespace PortalWeb
             Add.Visible = false;
             Mod.Visible = true;
             list.Visible = false;
+            BindingList<Usuario> pedido = lista.ListarStock();
+
+            pedido = lista.ListarStock();
+            ingredientes2.DataSource = pedido;
+            ingredientes2.DataBind();
 
         }
 
         protected void Showdel(object sender, EventArgs e)
         {
-            Delete.Visible = true;
-            Add.Visible = false;
-            Mod.Visible = false;
-            list.Visible = false;
-            StockManager stock = new StockManager();
-            BindingList<Ingrediente> lista = stock.ListarStock("");
-            ddlIng.DataSource = lista;
+            try
+            {
 
-            ddlIng.DataTextField = "User";
-            ddlIng.DataValueField = "Id";
+
+                Delete.Visible = true;
+                Add.Visible = false;
+                Mod.Visible = false;
+                list.Visible = false;
+                BindingList<Usuario> lista2 = lista.ListarStock();
+                ddlIng.DataSource = lista2;
+
+                ddlIng.DataTextField = "User";
+                ddlIng.DataValueField = "Id";
+                ddlIng.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
         }
 
         protected void btnBorrar_ServerClick(object sender, EventArgs e)
         {
+            try
+            {
 
-            StockManager stock = new StockManager();
-            stock.Delstocks(int.Parse(ddlIng.SelectedValue.ToString()));
-            BindingList<Ingrediente> lista = stock.ListarStock("");
-            ddlIng.DataSource = lista;
+                
+                lista.Delstocks(int.Parse(ddlIng.SelectedValue.ToString()));
+                BindingList<Usuario> lista2 = lista.ListarStock();
+                ddlIng.DataSource = lista2;
 
-            ddlIng.DataTextField = "User";
-            
-            ddlIng.DataValueField = "Id";
+                ddlIng.DataTextField = "User";
 
+                ddlIng.DataValueField = "Id";
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
 
         protected void startUpdate(object sender, RepeaterCommandEventArgs e)
         {
-            BindingList<Usuario> pedido = lista.ListarStock (txtmesa.Text.ToString());
+            try
+            {
 
-            iding.Value = e.CommandArgument.ToString();
-            txtdescripcion.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].User;
-            txtcant.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Tipo.ToString();
-            txttipo.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Pass;
-            Text2.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Nombre;
-            pnlCargadiv.Visible = false;
-            pnlCarga.Visible = true;
 
+                BindingList<Usuario> pedido = lista.ListarStock();
+
+                iding.Value = e.CommandArgument.ToString();
+                txtdescripcion.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].User;
+                ddltipo.SelectedValue = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Tipo.ToString();
+                txttipo.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Pass;
+                Text2.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Nombre;
+                pnlCargadiv.Visible = false;
+                pnlCarga.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
         }
 
         protected void btnAceptarCarga_ServerClick(object sender, EventArgs e)
         {
-            BindingList<Usuario> pedido = lista.ListarStock(txtmesa.Text.ToString());
+            try
+            {
 
-            lista.modstocks(int.Parse(iding.Value), txtdescripcion.Value, int.Parse(txtcant.Value), txttipo.Value, Text2.Value);
-            pnlCarga.Visible = false;
-            pnlCargadiv.Visible = true;
-            pedido = lista.ListarStock(txtmesa.Text.ToString());
 
-            ingredientes2.DataSource = pedido;
-            ingredientes2.DataBind();
+                BindingList<Usuario> pedido = lista.ListarStock();
 
+                lista.modstocks(int.Parse(iding.Value), txtdescripcion.Value, int.Parse(ddltipo.SelectedValue.ToString()), txttipo.Value, Text2.Value);
+                pnlCarga.Visible = false;
+                pnlCargadiv.Visible = true;
+                pedido = lista.ListarStock();
+
+                ingredientes2.DataSource = pedido;
+                ingredientes2.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
         }
 
         protected void btnnuevaCarga_ServerClick(object sender, EventArgs e)
         {
-            lista.AddNewstocks(txtdescripcion.Value, int.Parse(txtcant.Value), txttipo.Value,Text1.Value);
-            newdesc.Value = "";
-            newcant.Value = "";
-            newtipo.Value = "";
+            try
+            {
 
+
+                lista.AddNewstocks(newdesc.Value, int.Parse(ddltipo.SelectedValue.ToString()), newtipo.Value, Text1.Value);
+                newdesc.Value = "";
+                newcant.Value = "";
+                newtipo.Value = "";
+                Text1.Value = "";
+                Delete.Visible = false;
+                Add.Visible = false;
+                Mod.Visible = false;
+                list.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
 
 
-        protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
-        {
-            BindingList<Usuario> pedido = lista.ListarStock(txtmesa.Text.ToString());
-
-            pedido = lista.ListarStock(txtmesa.Text.ToString());
-            ingredientes.DataSource = pedido;
-            ingredientes.DataBind();
-
-
-        }
 
         protected void btnListMod_Click(object sender, EventArgs e)
         {
-            BindingList<Usuario> pedido = lista.ListarStock(txtmesa.Text.ToString());
+            try
+            {
 
-            pedido = lista.ListarStock(txtmesa.Text.ToString());
-            ingredientes2.DataSource = pedido;
-            ingredientes2.DataBind();
 
+                BindingList<Usuario> pedido = lista.ListarStock();
+
+                pedido = lista.ListarStock();
+                ingredientes2.DataSource = pedido;
+                ingredientes2.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
 
@@ -143,7 +200,7 @@ namespace PortalWeb
             pnlCarga.Visible = false;
             pnlCargadiv.Visible = true;
             txtdescripcion.Value = "";
-            txtcant.Value = "";
+            
             txttipo.Value = "";
 
 

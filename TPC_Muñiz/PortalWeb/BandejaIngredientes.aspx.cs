@@ -47,89 +47,146 @@ namespace PortalWeb
 
         protected void Showdel(object sender, EventArgs e)
         {
-            Delete.Visible = true;
-            Add.Visible = false;
-            Mod.Visible = false;
-            list.Visible = false;
-            StockManager stock = new StockManager();
-            BindingList<Ingrediente> lista = stock.ListarStock("");
-            ddlIng.DataSource = lista;
+            try
+            {
 
-            ddlIng.DataTextField = "Descripcion";
-            ddlIng.DataValueField = "Id";
+
+                Delete.Visible = true;
+                Add.Visible = false;
+                Mod.Visible = false;
+                list.Visible = false;
+                StockManager stock = new StockManager();
+                BindingList<Ingrediente> lista = stock.ListarStock("");
+                ddlIng.DataSource = lista;
+
+                ddlIng.DataTextField = "Descripcion";
+                ddlIng.DataValueField = "Id";
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
         }
 
         protected void btnBorrar_ServerClick(object sender, EventArgs e)
         {
+            try
+            {
 
-            StockManager stock = new StockManager();
+
+                StockManager stock = new StockManager();
                 stock.Delstocks(int.Parse(ddlIng.SelectedValue.ToString()));
-            BindingList<Ingrediente> lista = stock.ListarStock("");
-            ddlIng.DataSource = lista;
+                BindingList<Ingrediente> lista = stock.ListarStock("");
+                ddlIng.DataSource = lista;
 
-            ddlIng.DataTextField = "Descripcion";
-            ddlIng.DataValueField = "Id";
-
+                ddlIng.DataTextField = "Descripcion";
+                ddlIng.DataValueField = "Id";
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
 
         protected void startUpdate(object sender, RepeaterCommandEventArgs e)
         {
-            BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
+            try
+            {
 
-            iding.Value = e.CommandArgument.ToString();
-            txtdescripcion.Value = pedido[int.Parse(e.CommandArgument.ToString())-1].Descripcion;
-            txtcant.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Cantidad.ToString();
-            txttipo.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Tipocant;
-            pnlCargadiv.Visible = false;
-            pnlCarga.Visible = true;
 
+                BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
+
+                iding.Value = e.CommandArgument.ToString();
+                txtdescripcion.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Descripcion;
+                txtcant.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Cantidad.ToString();
+                txttipo.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Tipocant;
+                pnlCargadiv.Visible = false;
+                pnlCarga.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
         }
 
         protected void btnAceptarCarga_ServerClick(object sender, EventArgs e)
         {
-            BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
+            try
+            {
 
-            lista.modstocks(int.Parse(iding.Value), txtdescripcion.Value, int.Parse(txtcant.Value), txttipo.Value);
-            pnlCarga.Visible = false;
-            pnlCargadiv.Visible = true;
-            pedido = lista.ListarStock(txtmesa.Text.ToString());
 
-            ingredientes2.DataSource = pedido;
-            ingredientes2.DataBind();
+                BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
 
+                lista.modstocks(int.Parse(iding.Value), txtdescripcion.Value, float.Parse(txtcant.Value), txttipo.Value);
+                pnlCarga.Visible = false;
+                pnlCargadiv.Visible = true;
+                pedido = lista.ListarStock(txtmesa.Text.ToString());
+
+                ingredientes2.DataSource = pedido;
+                ingredientes2.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
         }
 
         protected void btnnuevaCarga_ServerClick(object sender, EventArgs e)
         {
-            lista.AddNewstocks( txtdescripcion.Value, int.Parse(txtcant.Value), txttipo.Value);
-            newdesc.Value = "";
-            newcant.Value = "";
-            newtipo.Value = "";
-            
+            try
+            {
+
+
+
+                lista.AddNewstocks(txtdescripcion.Value, int.Parse(txtcant.Value), txttipo.Value);
+                newdesc.Value = "";
+                newcant.Value = "";
+                newtipo.Value = "";
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
 
 
         protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
         {
-            BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
+            try
+            {
 
-            pedido = lista.ListarStock(txtmesa.Text.ToString());
-            ingredientes.DataSource = pedido;
-            ingredientes.DataBind();
 
+                BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
+
+                pedido = lista.ListarStock(txtmesa.Text.ToString());
+                ingredientes.DataSource = pedido;
+                ingredientes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
 
         protected void btnListMod_Click(object sender, EventArgs e)
         {
-            BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
+            try
+            {
 
-            pedido = lista.ListarStock(txtmesa.Text.ToString());
-            ingredientes2.DataSource = pedido;
-            ingredientes2.DataBind();
 
+                BindingList<Ingrediente> pedido = lista.ListarStock(txtmesa.Text.ToString());
+
+                pedido = lista.ListarStock(txtmesa.Text.ToString());
+                ingredientes2.DataSource = pedido;
+                ingredientes2.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
         }
 
@@ -145,7 +202,7 @@ namespace PortalWeb
 
         }
 
-
+     
 
     }
 }
