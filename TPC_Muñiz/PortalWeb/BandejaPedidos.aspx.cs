@@ -14,6 +14,11 @@ namespace PortalWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var cookie = Request.Cookies["session"];
+            if (cookie == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
         }
 
 
@@ -30,8 +35,8 @@ namespace PortalWeb
 
                 PedidosManager lista = new PedidosManager();
                 BindingList<Pedidos> pedido = lista.ListarPedidos(DateTime.Parse(datepickerfrom.Value), DateTime.Parse(datepickerto.Value), int.Parse(txtmesa.Text.ToString()));
-                ingredientes4.DataSource = pedido;
-                ingredientes4.DataBind();
+                ingredientes.DataSource = pedido;
+                ingredientes.DataBind();
             }
             catch (Exception ex)
             {

@@ -8,6 +8,7 @@ namespace TPC_Muñiz.Models
 {
     class Comida
     {
+        public int Itemid { get; set; }
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public float Precio { get; set; }

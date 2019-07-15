@@ -13,7 +13,14 @@ namespace PortalWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var cookie = Request.Cookies["session"];
+            if (cookie == null)
+            {
+            }
+            else
+            {
+                Response.Redirect("BandejaPedidos.aspx", false);
+            }
         }
 
 
@@ -47,6 +54,11 @@ namespace PortalWeb
                     {
                         if (accesoDatos.Lector.GetInt32(1) == 1)
                         {
+                            var cookie = new HttpCookie("session");
+                            cookie.Values.Add("user", user.Value);
+                            cookie.Values.Add("type", accesoDatos.Lector.GetInt32(1).ToString());
+                            cookie.Expires = DateTime.Now.AddDays(1);
+                            Response.Cookies.Add(cookie);
                             Response.Redirect("BandejaPedidos.aspx",false);
                         }
 

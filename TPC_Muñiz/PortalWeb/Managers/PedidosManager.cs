@@ -54,7 +54,7 @@ namespace TPC_Muñiz.Managers
                         Pedidos data = new Pedidos();
 
                         data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
-                        data.Idmesero = int.Parse(dt.Rows[x].ItemArray[01].ToString());
+                        data.Idmesero = int.Parse(dt.Rows[x].ItemArray[1].ToString());
                         data.Idmesa = int.Parse(dt.Rows[x].ItemArray[2].ToString());
                         data.Idcomida = int.Parse(dt.Rows[x].ItemArray[3].ToString());
                         data.Descripcion = dt.Rows[x].ItemArray[4].ToString();
@@ -133,6 +133,106 @@ namespace TPC_Muñiz.Managers
 
         }
 
+        public BindingList<Item> TraerCxi(int id)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    BindingList<Item> lista = new BindingList<Item>();
+                    DataTable dt = null;
+                    int x = 0;
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("listarcxi", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+                    dt = ds.Tables[0];
+
+                    for (x = 0; x < dt.Rows.Count; x++)
+                    {
+
+                        Item data = new Item();
+                        data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
+                        data.Descripcion = dt.Rows[x].ItemArray[1].ToString();
+                        data.Cantidad = float.Parse(dt.Rows[x].ItemArray[2].ToString());
+
+                        data.tipo = dt.Rows[x].ItemArray[3].ToString();
+                        lista.Add(data);
+                    }
+
+
+
+
+                    cn.Close();
+                    return lista;
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                    return null;
+                }
+            }
+
+
+        }
+
+        public BindingList<Item> Traeraux()
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    BindingList<Item> lista = new BindingList<Item>();
+                    DataTable dt = null;
+                    int x = 0;
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("listaraux", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+                    dt = ds.Tables[0];
+
+                    for (x = 0; x < dt.Rows.Count; x++)
+                    {
+
+                        Item data = new Item();
+                        data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
+                        data.Descripcion = dt.Rows[x].ItemArray[1].ToString();
+                        data.Cantidad = float.Parse(dt.Rows[x].ItemArray[2].ToString());
+
+                        data.tipo = dt.Rows[x].ItemArray[3].ToString();
+                        lista.Add(data);
+                    }
+
+
+
+
+                    cn.Close();
+                    return lista;
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                    return null;
+                }
+            }
+
+
+        }
 
 
         public List<int> CargarPedidos(Pedidos pedido)
@@ -229,7 +329,293 @@ namespace TPC_Muñiz.Managers
             }
         }
 
+        public void modComida(int id, string desc, float cant)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    DataTable dt = null;
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("Mod_comida", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.Parameters.AddWithValue("@descripcion", desc);
 
 
+                    cmd.Parameters.AddWithValue("@precio", cant);
+
+                    
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
+
+        public void cargaaux(int id, string desc, float cant, string tipo)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    DataTable dt = null;
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("cargaraux", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.Parameters.AddWithValue("@desc", desc);
+
+
+                    cmd.Parameters.AddWithValue("@cant", cant);
+
+                    cmd.Parameters.AddWithValue("@tipo", tipo);
+
+
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
+
+        public int AddNewcomida(string desc, float cant)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    DataTable dt = null;
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("agregarCom", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.AddWithValue("@desc", desc);
+
+
+                    cmd.Parameters.AddWithValue("@precio", cant);
+
+                    
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+                    dt = ds.Tables[0];
+
+                    return int.Parse(dt.Rows[0].ItemArray[0].ToString());
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                    cn.Close();
+                }
+            }
+        }
+
+        public void AddNewcxi(int desc, float cant, int idcomida, string tipo)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    DataTable dt = null;
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("agregarCxI", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.AddWithValue("@id", desc);
+
+
+                    cmd.Parameters.AddWithValue("@cant", cant);
+
+
+                    cmd.Parameters.AddWithValue("@idcomida", idcomida);
+
+                    cmd.Parameters.AddWithValue("@tipo", tipo);
+
+
+
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+                    dt = ds.Tables[0];
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
+
+
+
+        public void DelComida(int id)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("eliminarcomida", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
+
+        public void DelCxi(int id, int idcom)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("eliminarcxi", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.AddWithValue("@iding", id);
+
+                    cmd.Parameters.AddWithValue("@idcom", idcom);
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
+
+
+
+        public void DelallCxi(int idcom)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("eliminarcxi", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    
+
+                    cmd.Parameters.AddWithValue("@idcom", idcom);
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
     }
 }

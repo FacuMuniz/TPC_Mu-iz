@@ -21,15 +21,7 @@
 
             <asp:Panel ID="Panel1" runat="server" >
                 <div class="form-inline justify-content-center mt-2">
-                    <div class="form-group">
-                        <label class="sr-only">Ingrediente</label>
-                        <asp:TextBox CssClass="form-control" ID="txtmesa" runat="server" placeholder="Mesa"></asp:TextBox>
-                    </div>
-                   
-                    <div class="btn-group ml-1" role="group" aria-label="Botones filtrar">
-                        
-                        <asp:Button ID="Button2" type="submit" runat="server" CssClass="btn btn-secondary" Text="Limpiar Filtros" OnClick="btnLimpiarFiltros_Click"></asp:Button>
-                    </div>
+                 
                 </div>
             </asp:Panel>
 
@@ -108,18 +100,18 @@
 
                         <div>
                             <input type="button" class="auth-btn mt-4 mr-5" value="Aceptar" runat="server" id="Button3" onserverclick="btnAgregarIng_ServerClick"/>
-                            <asp:Repeater runat="server" ID="rptaddcomida" OnItemCommand="rpt_ItemCommand">
+                            <asp:Repeater runat="server" ID="rptaddcomida" OnItemCommand="rpt_ItemCommandadd">
                     <ItemTemplate>
                         <div class="row mb-1 ml-1">
                             <div class="col col-4">
-                                <label class="list-projects"><%#Eval("Ingrediente") %></label>
+                                <label class="list-projects"><%#Eval("Descripcion") %></label>
                             </div>
                             <div class="col col-4 right-column">
                                 
                                 <label class="list-projects"><%#Eval("Cantidad") %></label>
                             </div>
                              <div class="col col-4 right-column">
-                                <asp:LinkButton ID="btnEliminar"  runat="server"  CommandArgument='<%# Eval("item") %>' data-toggle="tooltip" data-placement="right" title="Remover Ingrediente" OnClientClick="postponePostback(this, event, showDeleteConfirmationtask, true)"  class="btn btn-circle btn-danger btn-stop ml-1"><i class="fas fa-times"></i></asp:LinkButton>
+                                <asp:LinkButton ID="btnEliminar"  runat="server"  CommandArgument='<%# Eval("Id") %>' data-toggle="tooltip" data-placement="right" title="Remover Ingrediente" OnClientClick="postponePostback(this, event, showDeleteConfirmationtask, true)"  class="btn btn-circle btn-danger btn-stop ml-1"><i class="fas fa-times"></i></asp:LinkButton>
 
                             </div>
                         
@@ -132,7 +124,7 @@
               
                    
                     <div class="d-flex justify-content-center">
-                        <input type="button" class="auth-btn mt-4 mr-5" value="Aceptar" runat="server" id="Button4" onserverclick="btnAceptarCarga_ServerClick"/>
+                        <input type="button" class="auth-btn mt-4 mr-5" value="Aceptar" runat="server" id="Button4" onserverclick="btnAceptarnuevaCarga_ServerClick"/>
                         <input type="button" class="auth-btn mt-4 ml-5" value="Cancelar" runat="server" id="Button5" onserverclick="btnCancelcarga_ServerClick"/>
                     </div>
 
@@ -150,15 +142,7 @@
 
                <asp:Panel ID="Panel2" runat="server" >
                 <div class="form-inline justify-content-center mt-2">
-                    <div class="form-group">
-                        <label class="sr-only">Ingrediente</label>
-                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Mesa"></asp:TextBox>
-                    </div>
-                   
-                    <div class="btn-group ml-1" role="group" aria-label="Botones filtrar">
-                        
-                        <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-secondary" Text="Limpiar Filtros" OnClick="btnListMod_Click"></asp:Button>
-                    </div>
+                  
                 </div>
             </asp:Panel>
 
@@ -171,6 +155,8 @@
                         <th> Descripcion </th>
                         
                         <th> Precio </th>
+
+                        <th> Modificar </th>
                         
                     </tr>
                 </thead>
@@ -190,7 +176,7 @@
                            
                              <td class="tblProyectos">
                                  
-                                <asp:LinkButton ID="btnModificar" value="" runat="server" CommandArgument='<%# Eval("Id") %>' OnClientClick="startUpdate" Class="btn btn-success fas fa-cloud-download-alt m-3"></i></asp:LinkButton>
+                                <asp:LinkButton ID="btnModificar" value="" runat="server" CommandArgument='<%# Eval("Itemid") %>' OnClientClick="startUpdate" Class="btn btn-success fas fa-cloud-download-alt m-3"></i></asp:LinkButton>
                             </td>
                             
                         </tr>
@@ -235,19 +221,19 @@
                     <div>
 
                         <div>
-                            <input type="button" class="auth-btn mt-4 mr-5" value="Aceptar" runat="server" id="AgregarIng" onserverclick="btnAgregarIng_ServerClick"/>
-                            <asp:Repeater runat="server" ID="rptIngredientes" OnItemCommand="rptmod_ItemCommand">
+                            <input type="button" class="auth-btn mt-4 mr-5" value="Agregar ingrediente" runat="server" id="AgregarIng" onserverclick="btnAgregarIng_ServerClick"/>
+                            <asp:Repeater runat="server" ID="rptIngredientes" OnItemCommand="rpt_ItemCommand">
                     <ItemTemplate>
                         <div class="row mb-1 ml-1">
                             <div class="col col-4">
-                                <label class="list-projects"><%#Eval("Ingrediente") %></label>
+                                <label class="list-projects"><%#Eval("Descripcion") %></label>
                             </div>
                             <div class="col col-4 right-column">
                                 
                                 <label class="list-projects"><%#Eval("Cantidad") %></label>
                             </div>
                              <div class="col col-4 right-column">
-                                <asp:LinkButton ID="btnEliminar"  runat="server"  CommandArgument='<%# Eval("item") %>' data-toggle="tooltip" data-placement="right" title="Remover Ingrediente" OnClientClick="postponePostback(this, event, showDeleteConfirmationtask, true)"  class="btn btn-circle btn-danger btn-stop ml-1"><i class="fas fa-times"></i></asp:LinkButton>
+                                <asp:LinkButton ID="btnEliminar"  runat="server"  CommandArgument='<%# Eval("Id") %>' data-toggle="tooltip" data-placement="right" title="Remover Ingrediente" OnClientClick="postponePostback(this, event, showDeleteConfirmationtask, true)"  class="btn btn-circle btn-danger btn-stop ml-1"><i class="fas fa-times"></i></asp:LinkButton>
 
                             </div>
                         

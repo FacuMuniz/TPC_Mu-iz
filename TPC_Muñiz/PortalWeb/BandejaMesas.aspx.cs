@@ -11,7 +11,11 @@ namespace PortalWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var cookie = Request.Cookies["session"];
+            if (cookie == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
         }
     }
 }

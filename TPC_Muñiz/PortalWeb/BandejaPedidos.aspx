@@ -14,8 +14,6 @@
       
 
 
-          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
             <asp:Panel ID="Panel1" runat="server" >
                 <div class="form-inline justify-content-center mt-2">
                     <div class="form-group">
@@ -40,9 +38,16 @@
                     </div>
                 </div>
 
-                     <div class="ml-2">
-                <div class="table-responsive">
-                <table id="tblingrediente4" class="tblProyectos">
+                
+
+            </asp:Panel>
+            
+
+
+
+
+     <asp:Panel ID="pnlProyectos" CssClass="tblProyectos" runat="server">
+            <table id="tblingrediente" class="tblProyectos">
                 <thead>
                     <tr>
                         <th> id </th>
@@ -61,7 +66,7 @@
                         
                     </tr>
                 </thead>
-                <asp:Repeater runat="server" ID="ingredientes4" >
+                <asp:Repeater runat="server" ID="ingredientes" >
                     <ItemTemplate >
                         <tr>
                             <td class="tblProyectos">
@@ -93,14 +98,41 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
-                    </div>
-            </div>
+        </asp:Panel>
 
-            </asp:Panel>
-            
-       
-        </ContentTemplate>
-    </asp:UpdatePanel>
+
+    
+    
+ <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tblingrediente').dataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+        });
+</script>
 
     <script type="text/javascript">
         function EnableTo() {
@@ -163,37 +195,6 @@
         };
     </script>
 
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#tblingrediente4').dataTable({
-                "language": {
-                    "sProcessing": "Procesando...",
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "sEmptyTable": "Ningún dato disponible en esta tabla",
-                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Buscar:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                }
-            });
-        });
-</script>
 
 
 
