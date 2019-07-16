@@ -56,7 +56,7 @@ namespace TPC_Muñiz
 
             accesoDatos.setearSP("Cerrardia");//SETEO EL SP
 
-            SqlParameter[] VectorParam = new SqlParameter[2]; //no funciona con lista, aqui se debe agregar la cantidad de parametros totales
+            SqlParameter[] VectorParam = new SqlParameter[1]; //no funciona con lista, aqui se debe agregar la cantidad de parametros totales
 
             accesoDatos.agregarParametroSP(VectorParam, 0, "@id", System.Data.SqlDbType.Int, int.Parse(lblid.Text)); // AGREGO UN PARAMETRO AL VECTOR EN ESA POSICION
   

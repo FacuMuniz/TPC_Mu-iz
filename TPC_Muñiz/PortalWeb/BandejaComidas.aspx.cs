@@ -166,7 +166,7 @@ namespace PortalWeb
                 }
                 iding.Value = e.CommandArgument.ToString();
                 txtdescripcion.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Descripcion;
-                txtcant.Value = pedido[int.Parse(e.CommandArgument.ToString())].Precio.ToString();
+                txtprecio.Value = pedido[int.Parse(e.CommandArgument.ToString())].Precio.ToString();
                 rptIngredientes.DataSource = listingredientes;
                 rptIngredientes.DataBind();
                 pnlCargadiv.Visible = false;

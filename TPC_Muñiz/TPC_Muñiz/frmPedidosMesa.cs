@@ -105,7 +105,7 @@ namespace TPC_Muñiz
                 pedido.Idmesero = int.Parse(lblidmesero.Text);
                 pedido.Idcomida = int.Parse(cmbcomidas.SelectedValue.ToString());
                 pedido.Descripcion = cmbcomidas.Text;
-                pedido.Precio = precios[nuevo.Id];
+                pedido.Precio = precios[nuevo.Id-1];
 
                 List<int> ingredientes = manager.CargarPedidos(pedido);
                 for (int x = 0; x < ingredientes.Count(); x++)

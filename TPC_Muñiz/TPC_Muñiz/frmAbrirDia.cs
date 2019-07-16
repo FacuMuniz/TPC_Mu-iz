@@ -46,6 +46,7 @@ namespace TPC_Muñiz
 
                     nuevo.Id = int.Parse(cmbMesas.Text);
                     nuevo.Mesero = int.Parse(cmbMeseros.SelectedValue.ToString());
+                    nuevo.Nombre = cmbMeseros.SelectedText;
                     nuevo.Sillas = rbtnselected();
                     nuevo.Salon = int.Parse(cmbMesas.SelectedValue.ToString());
                    

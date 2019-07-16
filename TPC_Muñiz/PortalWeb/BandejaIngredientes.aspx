@@ -25,7 +25,7 @@
                 <div class="form-inline justify-content-center mt-2">
                     <div class="form-group">
                         <label class="sr-only">Ingrediente</label>
-                        <asp:TextBox CssClass="form-control" ID="txtmesa" runat="server" placeholder="Mesa"></asp:TextBox>
+                        <asp:TextBox CssClass="form-control" ID="txtmesa" runat="server" placeholder="Ingrediente"></asp:TextBox>
                     </div>
                    
                     <div class="btn-group ml-1" role="group" aria-label="Botones filtrar">
@@ -132,7 +132,7 @@
                 <div class="form-inline justify-content-center mt-2">
                     <div class="form-group">
                         <label class="sr-only">Ingrediente</label>
-                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Mesa"></asp:TextBox>
+                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Ingrediente"></asp:TextBox>
                     </div>
                    
                     <div class="btn-group ml-1" role="group" aria-label="Botones filtrar">
