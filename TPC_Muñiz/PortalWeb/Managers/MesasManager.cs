@@ -8,6 +8,7 @@ using ACCESO_DATOS;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.ComponentModel;
 
 namespace TPC_Muñiz.Managers
 {
@@ -19,13 +20,13 @@ namespace TPC_Muñiz.Managers
         }
 
 
-        public List<Mesas> TraerMesas()
+        public BindingList<Mesas> TraerMesas()
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {
                 try
                 {
-                    List<Mesas> lista = new List<Mesas>();
+                    BindingList<Mesas> lista = new BindingList<Mesas>();
                     DataTable dt = null;
                     int x = 0;
                     var ds = new DataSet();
@@ -48,9 +49,11 @@ namespace TPC_Muñiz.Managers
 
                         data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
                         data.Mesero = int.Parse(dt.Rows[x].ItemArray[1].ToString());
-                        data.Sillas = int.Parse(dt.Rows[x].ItemArray[2].ToString());
-                        data.Salon = int.Parse(dt.Rows[x].ItemArray[3].ToString());
-                        data.Habilitada = bool.Parse(dt.Rows[x].ItemArray[4].ToString());
+
+                        data.Nombre = dt.Rows[x].ItemArray[2].ToString();
+                        data.Sillas = int.Parse(dt.Rows[x].ItemArray[3].ToString());
+                        data.Salon = int.Parse(dt.Rows[x].ItemArray[4].ToString());
+                        data.Habilitada = bool.Parse(dt.Rows[x].ItemArray[5].ToString());
                         lista.Add(data);
                     }
 
@@ -59,6 +62,122 @@ namespace TPC_Muñiz.Managers
 
                     cn.Close();
                     return lista;
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                    return null;
+                }
+            }
+
+
+        }
+
+
+        public void AddNewstocks(int desc, bool x)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    DataTable dt = null;
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("agregarmesa", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.AddWithValue("@salon", desc);
+
+
+                    cmd.Parameters.AddWithValue("@habilitada", x);
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
+
+        public void Delstocks(int id)
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("eliminarmesa", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+
+
+
+
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    cn.Close();
+                }
+            }
+        }
+
+
+        public DataTable TraerAperturas()
+        {
+            using (var cn = new SqlConnection(getConnectionString()))
+            {
+                try
+                {
+                    DataTable dt = null;
+                    int x = 0;
+                    var ds = new DataSet();
+                    var cmd = new SqlCommand("listar_aperturas", cn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+
+                    var da = new SqlDataAdapter(cmd);
+                    cn.Open();
+                    da.Fill(ds);
+
+                    dt = ds.Tables[0];
+
+
+
+
+                    cn.Close();
+                    return dt;
                 }
                 catch (Exception ex)
                 {

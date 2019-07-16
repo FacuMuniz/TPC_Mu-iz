@@ -161,9 +161,8 @@ namespace PortalWeb
             {
 
 
-                lista.AddNewstocks(newdesc.Value, int.Parse(ddltipo.SelectedValue.ToString()), newtipo.Value, Text1.Value);
+                lista.AddNewstocks(newdesc.Value, int.Parse(ddlnewtipo.SelectedValue.ToString()), newtipo.Value, Text1.Value);
                 newdesc.Value = "";
-                newcant.Value = "";
                 newtipo.Value = "";
                 Text1.Value = "";
                 Delete.Visible = false;

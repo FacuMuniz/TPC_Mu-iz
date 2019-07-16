@@ -10,6 +10,7 @@ namespace TPC_Muñiz.Models
     {
         public int Id { get; set; }
         public int Mesero { get; set; }
+        public string Nombre { get; set; }
         public int Sillas { get; set; }
         public int Salon { get; set; }
         public bool Habilitada { get; set; }

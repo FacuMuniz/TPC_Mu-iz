@@ -65,6 +65,7 @@ namespace PortalWeb
 
                 ddlIng.DataTextField = "Descripcion";
                 ddlIng.DataValueField = "Id";
+                ddlIng.DataBind();
             }
             catch (Exception ex)
             {

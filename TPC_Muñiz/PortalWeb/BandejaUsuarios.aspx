@@ -7,10 +7,10 @@
      <div id="divSearchTask" runat="server" visible="true" class="d-flex justify-content-center mt-3 mb-3">
              <div class=" d-flex justify-content-center align-items-center">
                  <div id="searchtaskdiv">
-                   <asp:LinkButton ID="ShowList" value="" runat="server" OnClick="showlist" ToolTip="Listar ingredientes" Class="btn btn-success btn-circle2 fas fa-align-justify" style="font-size: xx-large"></asp:LinkButton>
-                   <asp:LinkButton ID="Adding" value="" runat="server" OnClick="Showadd" ToolTip="Agregar ingredientes" Class="btn btn-danger btn-circle2 fas fa-plus" style="font-size: xx-large"></asp:LinkButton>
-                   <asp:LinkButton ID="Moding" value="" runat="server" OnClick="Showmod" ToolTip="Modificar ingredientes" Class="btn btn-success btn-circle2 fas fa-pen" style="font-size: xx-large"></asp:LinkButton>
-                   <asp:LinkButton ID="Deleteing" value="" runat="server" OnClick="Showdel" ToolTip="Borrar ingredientes" Class="btn btn-danger btn-circle2 fas fa-trash-alt" style="font-size: xx-large"></asp:LinkButton>
+                   <asp:LinkButton ID="ShowList" value="" runat="server" OnClick="showlist" ToolTip="Listar Usuarios" Class="btn btn-success btn-circle2 fas fa-align-justify" style="font-size: xx-large"></asp:LinkButton>
+                   <asp:LinkButton ID="Adding" value="" runat="server" OnClick="Showadd" ToolTip="Agregar Usuarios" Class="btn btn-danger btn-circle2 fas fa-plus" style="font-size: xx-large"></asp:LinkButton>
+                   <asp:LinkButton ID="Moding" value="" runat="server" OnClick="Showmod" ToolTip="Modificar Usuarios" Class="btn btn-success btn-circle2 fas fa-pen" style="font-size: xx-large"></asp:LinkButton>
+                   <asp:LinkButton ID="Deleteing" value="" runat="server" OnClick="Showdel" ToolTip="Borrar Usuarios" Class="btn btn-danger btn-circle2 fas fa-trash-alt" style="font-size: xx-large"></asp:LinkButton>
                    
                   </div>
             </div>  
@@ -89,7 +89,8 @@
                     </div>
                      <div class="d-flex justify-content-center">
                          <label class="header mr-5">Tipo</label>
-                        <input type="text" class=" mb-3" style="width:230px" placeholder="tipo" runat="server" id="newcant" maxlength="30"/>
+                        <<asp:DropDownList ID="ddlnewtipo" runat="server"><asp:ListItem Text="Admin" Value="1"></asp:ListItem>
+            <asp:ListItem Text="Mesero" Value="2"></asp:ListItem></asp:DropDownList>asp:DropDownList ID="ddlnewingadd" runat="server" ></asp:DropDownList>
                         
                     </div>
                      <div class="d-flex justify-content-center">

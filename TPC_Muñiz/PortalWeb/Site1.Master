@@ -56,9 +56,18 @@
                         <li class="nav-item ml-3"><a href="BandejaComidas.aspx" class="mt-2 text-light">Bandeja Comidas</a></li>
                     </ul>
                         </div>
-                </nav>
+                    <div class=" d-flex align-items-center space-between">
+                <label class="" runat="server" id="user"></label>
+                <div class="d-flex">
+                    <a href="#" runat="server" id="logout" data-toggle="tooltip" data-placement="right" title="Logout" onclick="postponePostbacklogout(this, event, showDeleteConfirmationlogout, true)" onserverclick="logout_ServerClick"><i class=" fas fa-sign-out-alt" style="font-size: xx-large"></i></a>                                       
+                </div>         
             </div>
+                </nav>
+                  
+            </div>
+          
         </div>
+           
     </div>
 
 

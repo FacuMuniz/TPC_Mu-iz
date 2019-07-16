@@ -13,5 +13,21 @@ namespace PortalWeb
         {
 
         }
+
+        protected void logout_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                var cookie = Request.Cookies["session"];
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(cookie);
+                Response.Redirect("Login.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Fallo login");
+            }
+
+        }
     }
 }
