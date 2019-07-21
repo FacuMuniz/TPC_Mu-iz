@@ -52,8 +52,8 @@ namespace TPC_Muñiz.Managers
 
                         data.Nombre = dt.Rows[x].ItemArray[2].ToString();
                         data.Mesero = int.Parse(dt.Rows[x].ItemArray[1].ToString());
-                        data.Sillas = int.Parse(dt.Rows[x].ItemArray[3].ToString());
-                        data.Salon = int.Parse(dt.Rows[x].ItemArray[4].ToString());
+                        data.Sillas = int.Parse(dt.Rows[x].ItemArray[4].ToString());
+                        data.Salon = int.Parse(dt.Rows[x].ItemArray[3].ToString());
                         data.Habilitada = bool.Parse(dt.Rows[x].ItemArray[5].ToString());
                         lista.Add(data);
                     }

@@ -22,5 +22,18 @@ namespace TPC_Muñiz
 
 
         }
+
+          public void PerformRefresh()
+        {
+            MesasManager listmesas = new MesasManager();
+            dgvMesas.DataSource = listmesas.TraerMesas();
+        }
+
+
+        private void btnAbrirDia_Click(object sender, EventArgs e)
+        {
+            frmAbrirDia AbrirDia = new frmAbrirDia(this);
+            AbrirDia.Show();
+        }
     }
 }

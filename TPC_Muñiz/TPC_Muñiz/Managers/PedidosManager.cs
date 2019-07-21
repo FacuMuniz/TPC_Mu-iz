@@ -248,9 +248,11 @@ namespace TPC_Muñiz.Managers
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    cmd.Parameters.AddWithValue("@hora", hora);
 
                     cmd.Parameters.AddWithValue("@idmesa", mesa);
+
+                    cmd.Parameters.AddWithValue("@hora", hora);
+
 
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();

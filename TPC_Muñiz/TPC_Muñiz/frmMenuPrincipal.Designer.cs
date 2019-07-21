@@ -31,9 +31,7 @@
             this.btnMostrarmMesas = new System.Windows.Forms.Button();
             this.btnConsultarPedidos = new System.Windows.Forms.Button();
             this.btnConsultarStocks = new System.Windows.Forms.Button();
-            this.btnAbrirDia = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnCargarStock = new System.Windows.Forms.Button();
             this.lblID = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -49,7 +47,7 @@
             // 
             // btnConsultarPedidos
             // 
-            this.btnConsultarPedidos.Location = new System.Drawing.Point(80, 166);
+            this.btnConsultarPedidos.Location = new System.Drawing.Point(80, 120);
             this.btnConsultarPedidos.Name = "btnConsultarPedidos";
             this.btnConsultarPedidos.Size = new System.Drawing.Size(157, 40);
             this.btnConsultarPedidos.TabIndex = 1;
@@ -67,35 +65,15 @@
             this.btnConsultarStocks.UseVisualStyleBackColor = true;
             this.btnConsultarStocks.Click += new System.EventHandler(this.btnConsultarStocks_Click);
             // 
-            // btnAbrirDia
-            // 
-            this.btnAbrirDia.Location = new System.Drawing.Point(80, 212);
-            this.btnAbrirDia.Name = "btnAbrirDia";
-            this.btnAbrirDia.Size = new System.Drawing.Size(157, 40);
-            this.btnAbrirDia.TabIndex = 3;
-            this.btnAbrirDia.Text = "Abrir Dia";
-            this.btnAbrirDia.UseVisualStyleBackColor = true;
-            this.btnAbrirDia.Click += new System.EventHandler(this.btnAbrirDia_Click);
-            // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(80, 279);
+            this.btnSalir.Location = new System.Drawing.Point(80, 218);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(157, 40);
             this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnCargarStock
-            // 
-            this.btnCargarStock.Location = new System.Drawing.Point(80, 120);
-            this.btnCargarStock.Name = "btnCargarStock";
-            this.btnCargarStock.Size = new System.Drawing.Size(157, 40);
-            this.btnCargarStock.TabIndex = 5;
-            this.btnCargarStock.Text = "Cargar Stocks";
-            this.btnCargarStock.UseVisualStyleBackColor = true;
-            this.btnCargarStock.Click += new System.EventHandler(this.btnCargarStock_Click);
             // 
             // lblID
             // 
@@ -111,11 +89,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 331);
+            this.ClientSize = new System.Drawing.Size(322, 263);
             this.Controls.Add(this.lblID);
-            this.Controls.Add(this.btnCargarStock);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnAbrirDia);
             this.Controls.Add(this.btnConsultarStocks);
             this.Controls.Add(this.btnConsultarPedidos);
             this.Controls.Add(this.btnMostrarmMesas);
@@ -132,9 +108,7 @@
         private System.Windows.Forms.Button btnMostrarmMesas;
         private System.Windows.Forms.Button btnConsultarPedidos;
         private System.Windows.Forms.Button btnConsultarStocks;
-        private System.Windows.Forms.Button btnAbrirDia;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnCargarStock;
         private System.Windows.Forms.Label lblID;
     }
 }

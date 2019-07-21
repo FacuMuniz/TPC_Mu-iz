@@ -44,11 +44,7 @@ namespace TPC_Muñiz
             ConsultarStocks.Show();
         }
 
-        private void btnAbrirDia_Click(object sender, EventArgs e)
-        {
-            frmAbrirDia AbrirDia = new frmAbrirDia();
-            AbrirDia.Show();
-        }
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {

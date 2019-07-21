@@ -14,9 +14,10 @@ namespace TPC_Muñiz
 {
     public partial class frmAbrirDia : Form
     {
+        frmMesas _owner;
         BindingList<Mesas> lista = new BindingList<Mesas>();
 
-        public frmAbrirDia()
+        public frmAbrirDia(frmMesas owner)
         {
             InitializeComponent();
 
@@ -29,8 +30,18 @@ namespace TPC_Muñiz
             cmbMeseros.DataSource = listmesero.TraerMeseros();
             cmbMeseros.DisplayMember = "Nombre";
             cmbMeseros.ValueMember = "Id";
+            _owner = owner;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAbrirDia_FormClosing);
         }
 
+        
+    
+        private void frmAbrirDia_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _owner.PerformRefresh();
+        }
+
+      
         private void gboxSillas_Enter(object sender, EventArgs e)
         {
 
@@ -127,10 +138,12 @@ namespace TPC_Muñiz
 
             if (result == "OK")
             {
-                MessageBox.Show("SE INICIO EL DIA CON EXITO");
+                MessageBox.Show("SE MODIFICARON LOS DATOS CON EXITO");
+                this.Close();
             }
 
-
+            
+                   
         }
 
     }
