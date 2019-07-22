@@ -49,7 +49,6 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-start" id="collapseTarget">
                     <ul id="menu" class=" nav ">
-                        <li class="nav-item "><a href="BandejaPedidos.aspx" class="mt-2 text-light">Bandeja Pedidos</a></li>
                         <li class="nav-item ml-3"><a href="BandejaUsuarios.aspx" class="mt-2 text-light">Bandeja Empleado</a></li>
                         <li class="nav-item ml-3"><a href="BandejaIngredientes.aspx" class="mt-2 text-light">Bandeja Stocks</a></li>
                         <li class="nav-item ml-3"><a href="BandejaMesas.aspx" class="mt-2 text-light">Bandeja Mesas</a></li>

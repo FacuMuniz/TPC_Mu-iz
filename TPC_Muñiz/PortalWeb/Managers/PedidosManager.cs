@@ -20,7 +20,7 @@ namespace TPC_Muñiz.Managers
         }
 
 
-        public BindingList<Pedidos> ListarPedidos(DateTime start, DateTime end, int mesa)
+        public BindingList<Pedidos> ListarPedidos(string start, string end, int mesa)
         {
             using (var cn = new SqlConnection(getConnectionString()))
             {

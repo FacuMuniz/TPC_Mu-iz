@@ -36,6 +36,8 @@ namespace PortalWeb
             Delete.Visible = false;
             Add.Visible = false;
             Mod.Visible = false;
+
+            Panel2.Visible = false;
             list.Visible = true;
 
             BindingList<Mesas> pedido = lista.TraerMesas();
@@ -50,6 +52,8 @@ namespace PortalWeb
             Delete.Visible = false;
             Add.Visible = true;
             Mod.Visible = false;
+
+            Panel2.Visible = false;
             list.Visible = false;
             ddlnewingadd.Items.Add("SI");
 
@@ -60,6 +64,8 @@ namespace PortalWeb
         {
             Delete.Visible = false;
             Add.Visible = false;
+            pnlCargadiv.Visible = true;
+            Panel2.Visible = false;
             Mod.Visible = true;
             list.Visible = false;
             DataTable pedido = lista.TraerAperturas();
@@ -75,6 +81,7 @@ namespace PortalWeb
             try
             {
 
+                Panel2.Visible = false;
 
                 Delete.Visible = true;
                 Add.Visible = false;
@@ -121,7 +128,7 @@ namespace PortalWeb
             try
             {
                 bool x = true;
-                if(ddlnewingadd.SelectedItem.Text=="SI")
+                if (ddlnewingadd.SelectedItem.Text == "SI")
                 {
                     x = true;
                 }
@@ -147,12 +154,52 @@ namespace PortalWeb
 
         protected void btnCancelcarga_ServerClick(object sender, EventArgs e)
         {
-            
+
             pnlCargadiv.Visible = true;
             newdesc.Value = "";
-            
+
 
 
         }
+
+        protected void MostrarPedidos(object sender, RepeaterCommandEventArgs e)
+        {
+
+            try
+            {
+                string[] fechas = e.CommandName.Split(',');
+
+
+                PedidosManager lista = new PedidosManager();
+                BindingList<Pedidos> pedido = lista.ListarPedidos(DateTime.Parse(fechas[0]).ToString("yyyyMMdd HH:mm:ss"), DateTime.Parse(fechas[1]).ToString("yyyyMMdd HH:mm:ss"), int.Parse(e.CommandArgument.ToString()));
+                rptMesas.DataSource = pedido;
+                rptMesas.DataBind();
+                pnlCargadiv.Visible = false;
+                Panel2.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+        }
+
+        protected void btnvolver_ServerClick(object sender, EventArgs e)
+        {
+
+            pnlCargadiv.Visible = true;
+            Panel2.Visible = false;
+            DataTable pedido = lista.TraerAperturas();
+
+            pedido = lista.TraerAperturas();
+            ingredientes2.DataSource = pedido;
+            ingredientes2.DataBind();
+
+
+        }
+
+
     }
+
+   
 }
+

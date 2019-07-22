@@ -19,7 +19,7 @@ namespace PortalWeb
             }
             else
             {
-                Response.Redirect("BandejaPedidos.aspx", false);
+                Response.Redirect("BandejaMesas.aspx", false);
             }
         }
 
@@ -59,7 +59,7 @@ namespace PortalWeb
                             cookie.Values.Add("type", accesoDatos.Lector.GetInt32(1).ToString());
                             cookie.Expires = DateTime.Now.AddDays(1);
                             Response.Cookies.Add(cookie);
-                            Response.Redirect("BandejaPedidos.aspx",false);
+                            Response.Redirect("BandejaMesas.aspx", false);
                         }
 
                     }

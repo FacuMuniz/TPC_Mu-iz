@@ -133,9 +133,11 @@
                         <th> Hora Fin </th>
 
                         <th> Monto Facturado </th>
+
+                        <th> Ver Pedidos </th>
                     </tr>
                 </thead>
-                <asp:Repeater runat="server" ID="ingredientes2"  >
+                <asp:Repeater runat="server" ID="ingredientes2" OnItemCommand="MostrarPedidos" >
                     <ItemTemplate >
                         <tr>
                             <td class="tblProyectos">
@@ -156,7 +158,10 @@
                              <td class="tblProyectos">
                                 <label class="list-projects tblProyectos"><%#Eval("MontoFacturado") %></label>
                             </td>
-                             
+                             <td class="tblProyectos">
+                                 
+                                <asp:LinkButton ID="btnModificar" value="" runat="server" CommandArgument='<%# Eval("idmesa") %>' CommandName='<%#Eval("horainicio")+","+ Eval("horafin")%>' OnClientClick="startUpdate" Class="btn btn-success fas fa-eye m-3"></i></asp:LinkButton>
+                            </td>
                             
                         </tr>
                     </ItemTemplate>
@@ -165,6 +170,67 @@
         </asp:Panel>
 
     </asp:Panel>
+
+     <asp:Panel ID="Panel2" CssClass="tblProyectos" runat="server" Visible="false">
+            <table id="tblingrediente" class="tblProyectos">
+                <thead>
+                    <tr>
+                        <th> id </th>
+
+                        <th> Idmesero </th>
+                        
+                        <th> Idmesa </th>
+                        
+                        <th> Idcomida </th>
+                        
+                        <th> Descripcion </th>
+                        
+                        <th> Hora </th>
+                        
+                        <th> Precio </th>
+                        
+                    </tr>
+                </thead>
+                <asp:Repeater runat="server" ID="rptMesas" >
+                    <ItemTemplate >
+                        <tr>
+                            <td class="tblProyectos">
+                                <label class="list-projects tblProyectos"><%#Eval("Id") %></label>
+                            </td>
+                            <td class="tblProyectos">
+                                <label class="list-projects tblProyectos"><%#Eval("Idmesero") %></label>
+                            </td>
+                             <td class="tblProyectos">
+                                <label class="list-projects tblProyectos"><%#Eval("Idmesa") %></label>
+                            </td>
+                             <td class="tblProyectos">
+                                <label class="list-projects tblProyectos"><%#Eval("Idcomida") %></label>
+                            </td>
+                             <td class="tblProyectos">
+                                <label class="list-projects tblProyectos"><%#Eval("Descripcion") %></label>
+                            </td>
+                             <td class="tblProyectos">
+                                <label class="list-projects tblProyectos"><%#Eval("Hora") %></label>
+                            </td>
+                             <td class="tblProyectos">
+                                <label class="list-projects tblProyectos"><%#Eval("Precio") %></label>
+                            </td>
+                       
+                           
+                            
+                            
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </table>
+         <div class="d-flex justify-content-center">
+             <asp:LinkButton ID="LinkButton1" value="" runat="server" OnClick="btnvolver_ServerClick" ToolTip="Volver" Class="btn btn-danger btn-circle2 fas fa-arrow-left" style="font-size: xx-large"></asp:LinkButton>
+                         
+                    </div>
+        </asp:Panel>
+
+
+
 
         <asp:Panel id="Delete" runat="server" Visible="false">
 

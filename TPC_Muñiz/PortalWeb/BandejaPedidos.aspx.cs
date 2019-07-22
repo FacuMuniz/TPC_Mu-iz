@@ -34,9 +34,10 @@ namespace PortalWeb
 
 
                 PedidosManager lista = new PedidosManager();
-                BindingList<Pedidos> pedido = lista.ListarPedidos(DateTime.Parse(datepickerfrom.Value), DateTime.Parse(datepickerto.Value), int.Parse(txtmesa.Text.ToString()));
-                ingredientes.DataSource = pedido;
-                ingredientes.DataBind();
+                //BindingList<Pedidos> pedido = lista.ListarPedidos(DateTime.Parse(datepickerfrom.Value), DateTime.Parse(datepickerto.Value), int.Parse(txtmesa.Text.ToString()));
+               // ingredientes.DataSource = pedido;
+                //ingredientes.DataBind();
+                
             }
             catch (Exception ex)
             {
