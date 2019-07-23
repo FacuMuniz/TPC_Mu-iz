@@ -190,7 +190,7 @@ namespace TPC_Muñiz.Managers
                     cmd.Parameters.AddWithValue("@cant", cant);
 
 
-                    cmd.Parameters.AddWithValue("@tipocant", tipo);
+                    cmd.Parameters.AddWithValue("@tipo", tipo);
 
                     var da = new SqlDataAdapter(cmd);
                     cn.Open();

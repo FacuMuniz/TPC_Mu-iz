@@ -4,6 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
          <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <asp:HiddenField id="idcom" runat="server" value=""/>
 
      <div id="divSearchTask" runat="server" visible="true" class="d-flex justify-content-center mt-3 mb-3">
              <div class=" d-flex justify-content-center align-items-center">

@@ -144,7 +144,7 @@ namespace PortalWeb
 
 
 
-                lista.AddNewstocks(txtdescripcion.Value, int.Parse(txtcant.Value), txttipo.Value);
+                lista.AddNewstocks(newdesc.Value, int.Parse(newcant.Value), newtipo.Value);
                 newdesc.Value = "";
                 newcant.Value = "";
                 newtipo.Value = "";

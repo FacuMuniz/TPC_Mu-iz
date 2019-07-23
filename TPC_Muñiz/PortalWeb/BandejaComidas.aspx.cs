@@ -148,11 +148,12 @@ namespace PortalWeb
             {
                 int x = 0;
                 id = int.Parse(e.CommandArgument.ToString());
+                idcom.Value = id.ToString();
                 StockManager cargar = new StockManager();
                 List<string> tipos = new List<string>();
                 BindingList<Ingrediente> ingredientes2 = cargar.ListarStock("");
                 BindingList<Comida> pedido = lista.TraerComidas();
-                listingredientes = lista.TraerCxi(int.Parse(e.CommandArgument.ToString()));
+                listingredientes = lista.TraerCxi(int.Parse(e.CommandArgument.ToString())+1);
                 ddlIngredientes.DataSource = ingredientes2;
                
                 ddlIngredientes.DataTextField = "Descripcion";
@@ -165,10 +166,16 @@ namespace PortalWeb
                     tipos.Add(ingredientes2[x].Tipocant);
                 }
                 iding.Value = e.CommandArgument.ToString();
-                txtdescripcion.Value = pedido[int.Parse(e.CommandArgument.ToString()) - 1].Descripcion;
+                txtdescripcion.Value = pedido[int.Parse(e.CommandArgument.ToString())].Descripcion;
                 txtprecio.Value = pedido[int.Parse(e.CommandArgument.ToString())].Precio.ToString();
                 rptIngredientes.DataSource = listingredientes;
                 rptIngredientes.DataBind();
+                foreach (Item item in listingredientes)
+                {
+
+                    lista.cargaaux(item.Id, item.Descripcion, item.Cantidad, item.tipo);
+
+                }
                 pnlCargadiv.Visible = false;
                 pnlCarga.Visible = true;
             }
@@ -246,9 +253,7 @@ namespace PortalWeb
 
                         lista.AddNewcxi(int.Parse(ddlnewingadd.SelectedValue), float.Parse(txtcant.Value.ToString()), id, data.tipo);
                     }
-
-                    pnlCarga.Visible = false;
-                    pnlCargadiv.Visible = true;
+                    
                     rptIngredientes.DataSource = listingredientes;
                     rptIngredientes.DataBind();
                 }
@@ -310,6 +315,7 @@ namespace PortalWeb
 
                 ingredientes2.DataSource = pedido;
                 ingredientes2.DataBind();
+                Response.Redirect("BandejaComidas.aspx", false);
             }
             catch (Exception ex)
             {
@@ -320,8 +326,8 @@ namespace PortalWeb
 
         protected void rpt_ItemCommand(object sender, RepeaterCommandEventArgs e)
         {
-            
-            listingredientes = lista.TraerCxi(int.Parse(e.CommandArgument.ToString()));
+
+            listingredientes = lista.Traeraux();
             int index = 0;
             for (int x = 0; x < listingredientes.Count(); x++)
             {
@@ -331,12 +337,17 @@ namespace PortalWeb
                 }
             }
 
-            lista.DelCxi(listingredientes[index].Id, id);
+            lista.DelCxi(listingredientes[index].Id, int.Parse(idcom.Value.ToString())+1);
 
-            listingredientes = lista.TraerCxi(int.Parse(e.CommandArgument.ToString()));
-
+            
             listingredientes.RemoveAt(index);
-           
+
+            foreach (Item item in listingredientes)
+            {
+                lista.cargaaux(item.Id, item.Descripcion, item.Cantidad, item.tipo);
+
+            }
+
             rptIngredientes.DataSource = listingredientes;
             rptIngredientes.DataBind();
             rptaddcomida.DataSource = listingredientes;

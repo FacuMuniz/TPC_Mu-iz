@@ -109,7 +109,7 @@ namespace TPC_Muñiz.Managers
                     {
 
                         Comida data = new Comida();
-
+                        data.Itemid= x;
                         data.Id = int.Parse(dt.Rows[x].ItemArray[0].ToString());
                         data.Descripcion = dt.Rows[x].ItemArray[1].ToString();
                         data.Precio = float.Parse(dt.Rows[x].ItemArray[2].ToString());

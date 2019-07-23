@@ -87,10 +87,10 @@
                         <input type="text" class=" mb-3" style="width:230px" placeholder="Usuario" runat="server" id="newdesc" maxlength="30"/>
                         
                     </div>
-                     <div class="d-flex justify-content-center">
-                         <label class="header mr-5">Tipo</label>
-                        <<asp:DropDownList ID="ddlnewtipo" runat="server"><asp:ListItem Text="Admin" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Mesero" Value="2"></asp:ListItem></asp:DropDownList>asp:DropDownList ID="ddlnewingadd" runat="server" ></asp:DropDownList>
+                     <div class="d-flex mb-1">
+                         <label class="header mr-5" style="margin-left:60px" >Tipo</label>
+                        <asp:DropDownList ID="ddlnewtipo" runat="server" CssClass="ml-3" ><asp:ListItem Text="Admin" Value="1"></asp:ListItem>
+            <asp:ListItem Text="Mesero" Value="2"></asp:ListItem></asp:DropDownList>
                         
                     </div>
                      <div class="d-flex justify-content-center">
